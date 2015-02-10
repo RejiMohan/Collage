@@ -1,9 +1,3 @@
-/*
- * Login.java
- *
- * Created on December 6, 2010, 8:31 AM
- */
-
 package com.collage.forms;
 
 import static java.awt.EventQueue.invokeLater;
@@ -34,6 +28,7 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -72,9 +67,7 @@ public class Login extends JFrame {
      * This method is called from within the constructor to
      * initialize the form.
      */
-    @SuppressWarnings("unchecked")
     private void initComponents() {
-
         jPanel1 = new JPanel();
         uname = new JTextField();
         pword = new JPasswordField();
@@ -87,7 +80,7 @@ public class Login extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBackground(new Color(255, 153, 153));
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(800, 640));
+        setMinimumSize(new Dimension(800, 640));
         setName("");
 
         jPanel1.setBackground(new Color(255, 255, 255));
@@ -216,7 +209,7 @@ public class Login extends JFrame {
 
     private void LoginActionPerformed(ActionEvent evt) {
         username = uname.getText();
-        String password = pword.getPassword().toString();
+        String password = new String(pword.getPassword());
         try {
             if (username.equals("") || password.equals("")) {
                 JOptionPane.showMessageDialog(this, "Enter values in both fields");
@@ -224,7 +217,7 @@ public class Login extends JFrame {
                 String a[] = databaseProcess.validate(username);
 
                 boolean isExistingUser = databaseProcess.isAlreadyExistingUsername(username);
-                if (isExistingUser || !(a[3].equals(username))) {
+                if (!isExistingUser || !(a[3].equals(username))) {
                     JOptionPane.showMessageDialog(this, "Invalid Username");
                 } else if (a[0].equals(password)) {
                     if (a[2].equals("1")) {
