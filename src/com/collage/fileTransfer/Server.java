@@ -1,10 +1,13 @@
 package com.collage.fileTransfer;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
 
 public class Server implements Runnable {
 
@@ -40,9 +43,10 @@ public class Server implements Runnable {
 
         public void run() {
             try {
-                String t_hr = new String();
-                String t_min = new String();
-                String t_sec = new String();
+                int t_hr = LocalDateTime.now().getHour();
+                int t_min = LocalDateTime.now().getMinute();
+                int t_sec = LocalDateTime.now().getSecond();
+
                 String a = bufferedReader.readLine();
                 if (a.equals("file")) {
                     String size = bufferedReader.readLine();
@@ -52,29 +56,10 @@ public class Server implements Runnable {
                     System.out.println(rec);
                     File f = new File("./inbox/" + rec);
                     f.mkdirs();
-                    Calendar cal = new GregorianCalendar();
-                    int hr = cal.get(Calendar.HOUR_OF_DAY);
-                    if (hr < 10) {
-                        t_hr = "0" + Integer.toString(hr);
-                    } else {
-                        t_hr = Integer.toString(hr);
-                    }
-                    int min = cal.get(Calendar.MINUTE);
-                    if (min < 10) {
-                        t_min = "0" + Integer.toString(min);
-                    } else {
-                        t_min = Integer.toString(min);
-                    }
-                    int sec = cal.get(Calendar.SECOND);
-                    if (sec < 10) {
-                        t_sec = "0" + Integer.toString(sec);
-                    } else {
-                        t_sec = Integer.toString(sec);
-                    }
                     String target = "./inbox/" + rec + "/" + t_hr + "-" + t_min + "-" + t_sec + "  " + fname;
                     fos = new FileOutputStream(target);
                     byte b[] = new byte[1024];
-                    int ch = 0, cnt = 0;
+                    int ch, cnt = 0;
                     while ((ch = is.read(b, 0, 1024)) != -1) {
                         cnt += ch;
                         fos.write(b, 0, ch);

@@ -40,11 +40,11 @@ public class ChangePassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        c_pwd = new javax.swing.JPasswordField();
-        n_pwd1 = new javax.swing.JPasswordField();
-        n_pwd2 = new javax.swing.JPasswordField();
-        OK = new javax.swing.JButton();
-        Cancel = new javax.swing.JButton();
+        oldPasswordField = new javax.swing.JPasswordField();
+        newPasswordField = new javax.swing.JPasswordField();
+        confirmPasswordField = new javax.swing.JPasswordField();
+        btnOK = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,17 +59,17 @@ public class ChangePassword extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel3.setText("Retype Password");
 
-        OK.setForeground(new java.awt.Color(51, 51, 51));
-        OK.setText("OK");
-        OK.addActionListener(new java.awt.event.ActionListener() {
+        btnOK.setForeground(new java.awt.Color(51, 51, 51));
+        btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OKActionPerformed(evt);
             }
         });
 
-        Cancel.setForeground(new java.awt.Color(51, 51, 51));
-        Cancel.setText("Cancel");
-        Cancel.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setForeground(new java.awt.Color(51, 51, 51));
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelActionPerformed(evt);
             }
@@ -86,9 +86,9 @@ public class ChangePassword extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
                                                         .Alignment.TRAILING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(OK)
+                                                                .addComponent(btnOK)
                                                                 .addGap(18, 18, 18)
-                                                                .addComponent(Cancel))
+                                                                .addComponent(btnCancel))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGroup(layout.createParallelGroup(javax.swing
                                                                         .GroupLayout.Alignment.TRAILING)
@@ -98,10 +98,11 @@ public class ChangePassword extends javax.swing.JFrame {
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(javax.swing
                                                                         .GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(c_pwd, javax.swing.GroupLayout
+                                                                        .addComponent(oldPasswordField, javax.swing
+                                                                                .GroupLayout
                                                                                 .DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                                                                        .addComponent(n_pwd1)
-                                                                        .addComponent(n_pwd2)))))
+                                                                        .addComponent(newPasswordField)
+                                                                        .addComponent(confirmPasswordField)))))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
                                                 .createSequentialGroup()
                                                 .addContainerGap()
@@ -115,7 +116,7 @@ public class ChangePassword extends javax.swing.JFrame {
                                 .addGap(102, 102, 102)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1)
-                                        .addComponent(c_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
+                                        .addComponent(oldPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
                                                 .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing
@@ -123,17 +124,17 @@ public class ChangePassword extends javax.swing.JFrame {
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel2)
-                                        .addComponent(n_pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
+                                        .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
                                                 .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel3)
-                                        .addComponent(n_pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
+                                        .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
                                                 .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(OK)
-                                        .addComponent(Cancel))
+                                        .addComponent(btnOK)
+                                        .addComponent(btnCancel))
                                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -142,9 +143,9 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {
         String a[] = new String[3];
-        String p = c_pwd.getPassword().toString();
-        String np1 = n_pwd1.getPassword().toString();
-        String np2 = n_pwd2.getPassword().toString();
+        String p = oldPasswordField.getPassword().toString();
+        String np1 = newPasswordField.getPassword().toString();
+        String np2 = confirmPasswordField.getPassword().toString();
 
         try {
             int k = 0;
@@ -166,9 +167,9 @@ public class ChangePassword extends javax.swing.JFrame {
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Passwords do not match");
-                    c_pwd.setText("");
-                    n_pwd1.setText("");
-                    n_pwd2.setText("");
+                    oldPasswordField.setText("");
+                    newPasswordField.setText("");
+                    confirmPasswordField.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect Password");
@@ -176,9 +177,9 @@ public class ChangePassword extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             System.out.println("Exception " + ex);
-            c_pwd.setText("");
-            n_pwd1.setText("");
-            n_pwd2.setText("");
+            oldPasswordField.setText("");
+            newPasswordField.setText("");
+            confirmPasswordField.setText("");
         }
     }
 
@@ -203,13 +204,13 @@ public class ChangePassword extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Cancel;
-    private javax.swing.JButton OK;
-    private javax.swing.JPasswordField c_pwd;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnOK;
+    private javax.swing.JPasswordField oldPasswordField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPasswordField n_pwd1;
-    private javax.swing.JPasswordField n_pwd2;
+    private javax.swing.JPasswordField newPasswordField;
+    private javax.swing.JPasswordField confirmPasswordField;
 }

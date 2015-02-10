@@ -27,7 +27,6 @@ public class ChangeImage extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-
     }
 
     /**
@@ -158,26 +157,21 @@ public class ChangeImage extends javax.swing.JFrame {
     }
 
     private void BrowseActionPerformed(java.awt.event.ActionEvent evt) {
-
-        JFileChooser jf = new JFileChooser();
-        //String file_name="",file_ext="";
+        JFileChooser jFileChooser = new JFileChooser();
         try {
-            jf.showOpenDialog(this);
-            String file = jf.getSelectedFile().toString();
+            jFileChooser.showOpenDialog(this);
+            String file = jFileChooser.getSelectedFile().toString();
             src.setText(file);
             new_img.setIcon(new ImageIcon(file));
-
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
     }
 
     private void ChangeActionPerformed(java.awt.event.ActionEvent evt) {
-
         File f = new File(new ViewImages().file);
         String fname = f.getName().substring(0, f.getName().indexOf("."));
         String fpath = f.getParent();
-        //System.out.println(fpath);
         String s_path = src.getText();
         if (new Steganography().encode(src.getText(), new ViewImagePool().c, fpath)) {
             JOptionPane.showMessageDialog(null, "Character Encoded");
