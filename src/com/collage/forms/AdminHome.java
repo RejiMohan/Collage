@@ -28,7 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdminHome extends JFrame {
-    private DatabaseProcess dp = new DatabaseProcess();
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
 
     /**
      * Creates new form AdminHome
@@ -44,7 +44,7 @@ public class AdminHome extends JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        pendingTextField.setText(Integer.toString(dp.getPendingApprovalCount()));
+        pendingTextField.setText(Integer.toString(databaseProcess.getPendingApprovalCount()));
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.collage.database;
 
+import com.collage.User;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,8 @@ public class DatabaseProcess {
     public String[] validate(String username) {
         String a[] = new String[4];
         try {
-            //System.out.println(username);
             String query = "select * from login where " + USERNAME + "='" + username + "'";
             resultSet = dbConnection.executeQuery(query);
-            //System.out.println("executed");
 
             while (resultSet.next()) {
                 a[0] = resultSet.getString(PASSWORD);
@@ -52,41 +52,40 @@ public class DatabaseProcess {
         return false;
     }
 
-    public int update(String name, String address, String email, String designation, String username) {
-        int i = 0;
+    public boolean insertUser(User user) {
+        String name = user.getName();
+        String address = user.getAddress();
+        String email = user.getEmail();
+        String designation = user.getDesignation();
+        String username = user.getUsername();
         try {
             String query = "insert into registration values('" + name + "','" + address + "','" + email + "','" +
                     designation + "','" + username + "')";
-            i = dbConnection.updateQuery(query);
-
+            return (dbConnection.updateQuery(query) > 0) ? true : false;
         } catch (Exception ex) {
             System.out.println("Exception " + ex);
+            return false;
         }
-        return i;
     }
 
-    public int updatel(String username, String password) {
-        int i = 0;
+    public boolean insertUserInLogin(String username, String password) {
         try {
             String query = "insert into login values('" + username + "','" + password + "','user','0')";
-            i = dbConnection.updateQuery(query);
-
+            return (dbConnection.updateQuery(query) > 0) ? true : false;
         } catch (Exception ex) {
             System.out.println("Exception " + ex);
+            return false;
         }
-        return i;
     }
 
     public int change(String username, String password) {
-        int i = 0;
         try {
             String query = "update login set pwd='" + password + "' where  " + USERNAME + "='" + username + "'";
-            i = dbConnection.updateQuery(query);
-
+            return dbConnection.updateQuery(query);
         } catch (Exception ex) {
             System.out.println("Exception " + ex);
         }
-        return i;
+        return 0;
     }
 
     public List listUsers(int status) {
@@ -112,29 +111,25 @@ public class DatabaseProcess {
     }
 
     public int addUser(String username) {
-        int i = 0;
         try {
             String query = "update login set status='1' where  " + USERNAME + "='" + username + "'";
-            i = dbConnection.updateQuery(query);
-
+            return dbConnection.updateQuery(query);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        return i;
+        return 0;
     }
 
     public int rejectUser(String username) {
-        int i = 0;
         try {
             String query = "delete from login where  " + USERNAME + "='" + username + "'";
-            i = dbConnection.updateQuery(query);
+            dbConnection.updateQuery(query);
             query = "delete from registration where  " + USERNAME + "='" + username + "'";
-            i = dbConnection.updateQuery(query);
-
+            return dbConnection.updateQuery(query);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        return i;
+        return 0;
     }
 
 
@@ -143,10 +138,7 @@ public class DatabaseProcess {
         try {
             String query = "select * from registration where  " + USERNAME + "='" + username + "'";
             resultSet = dbConnection.executeQuery(query);
-            //System.out.println("executed");
-
             while (resultSet.next()) {
-                //System.out.println("in Chekking");
                 a[0] = resultSet.getString("name");
                 a[1] = resultSet.getString("addr");
                 a[2] = resultSet.getString("email");
@@ -217,18 +209,18 @@ public class DatabaseProcess {
         return "Error";
     }
 
-    public Vector getIPList() {
+    public List getIPList() {
         String qry = "select * from ipaddr";
-        Vector v = new Vector();
+        List ipList = new ArrayList();
         try {
             resultSet = dbConnection.executeQuery(qry);
             while (resultSet.next()) {
-                v.add(resultSet.getString("ip"));
+                ipList.add(resultSet.getString("ip"));
             }
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        return v;
+        return ipList;
     }
 
     public String getUser(String userIpAddress) {
@@ -247,13 +239,12 @@ public class DatabaseProcess {
 
     public int setStatus(String ipAddress, String status) {
         String qry = "update imgstat set status='" + status + "' where ip='" + ipAddress + "'";
-        int j = 0;
         try {
-            j = dbConnection.updateQuery(qry);
+            return dbConnection.updateQuery(qry);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        return j;
+        return 0;
     }
 
     public Vector getList() {

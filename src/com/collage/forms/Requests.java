@@ -10,23 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Requests extends javax.swing.JFrame {
-    List v = new ArrayList();
+    List userList = new ArrayList();
     DatabaseProcess dp = new DatabaseProcess();
 
     public Requests() {
         initComponents();
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        int wid = getWidth();
-        int heig = getHeight();
-        setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
+        int width = getWidth();
+        int height = getHeight();
+        setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        v = dp.listUsers(0);
-        u_list.setListData(v.toArray());
-
+        userList = dp.listUsers(0);
+        u_list.setListData(userList.toArray());
     }
 
     private void initComponents() {
@@ -236,7 +235,6 @@ public class Requests extends javax.swing.JFrame {
                                                         338, Short.MAX_VALUE)
                                                 .addGap(22, 22, 22))))
         );
-
         pack();
     }
 
@@ -246,8 +244,8 @@ public class Requests extends javax.swing.JFrame {
             i = dp.addUser(u_list.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Approved");
-                v = dp.listUsers(0);
-                u_list.setListData(v.toArray());
+                userList = dp.listUsers(0);
+                u_list.setListData(userList.toArray());
                 name.setText("");
                 adrs.setText("");
                 dsgn.setText("");
@@ -255,10 +253,8 @@ public class Requests extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Error");
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No user selected");
-
         }
     }
 
@@ -273,8 +269,8 @@ public class Requests extends javax.swing.JFrame {
             i = dp.rejectUser(u_list.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Rejected");
-                v = dp.listUsers(0);
-                u_list.setListData(v.toArray());
+                userList = dp.listUsers(0);
+                u_list.setListData(userList.toArray());
                 name.setText("");
                 adrs.setText("");
                 dsgn.setText("");
@@ -282,10 +278,8 @@ public class Requests extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Error");
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No user selected");
-
         }
     }
 
@@ -337,6 +331,4 @@ public class Requests extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField name;
     private javax.swing.JList u_list;
-
-
 }

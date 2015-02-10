@@ -28,8 +28,12 @@ public class ClientList extends JFrame {
      * Creates new form ClientList
      */
     List userList = new ArrayList();
-    DatabaseProcess dp = new DatabaseProcess();
-    public static String u = "";
+    DatabaseProcess databaseProcess = new DatabaseProcess();
+    private static String selectedUser;
+
+    public static String getSelectedUser() {
+        return selectedUser;
+    }
 
     public ClientList() {
         initComponents();
@@ -42,7 +46,7 @@ public class ClientList extends JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        userList = dp.listUsers(1);
+        userList = databaseProcess.listUsers(1);
         clientJList.setListData(userList.toArray());
     }
 
@@ -50,7 +54,6 @@ public class ClientList extends JFrame {
      * This method is called from within the constructor to
      * initialize the form.
      */
-    @SuppressWarnings("unchecked")
     private void initComponents() {
 
         jScrollPane1 = new JScrollPane();
@@ -115,20 +118,16 @@ public class ClientList extends JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void ViewActionPerformed(ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+    private void ViewActionPerformed(ActionEvent evt) {
         try {
-            u = clientJList.getSelectedValue().toString();
-
-
+            selectedUser = clientJList.getSelectedValue().toString();
             this.setVisible(false);
             new Details().setVisible(true);
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No User Selected");
         }
-
     }
 
     private void BackActionPerformed(ActionEvent evt) {

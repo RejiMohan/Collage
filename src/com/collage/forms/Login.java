@@ -214,7 +214,7 @@ public class Login extends JFrame {
         pack();
     }
 
-    private void LoginActionPerformed(ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+    private void LoginActionPerformed(ActionEvent evt) {
         username = uname.getText();
         String password = pword.getPassword().toString();
         try {

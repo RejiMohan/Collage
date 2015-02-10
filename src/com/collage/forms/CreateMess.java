@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CreateMess extends javax.swing.JFrame {
 
-    List v = new ArrayList();
+    List userList = new ArrayList();
     DatabaseProcess dp = new DatabaseProcess();
     String user = Login.getUsername();
 
@@ -31,12 +31,12 @@ public class CreateMess extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        v = dp.listUsers(1);
-        for (int i = 0; i < v.size(); i++) {
-            if (v.get(i).toString().equals(user)) {
+        userList = dp.listUsers(1);
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).toString().equals(user)) {
                 continue;
             }
-            u_list.addItem(v.get(i));
+            u_list.addItem(userList.get(i));
         }
 
     }

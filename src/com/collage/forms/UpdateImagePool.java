@@ -7,7 +7,10 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class UpdateImagePool extends javax.swing.JFrame {
@@ -15,26 +18,24 @@ public class UpdateImagePool extends javax.swing.JFrame {
     /**
      * Creates new form UpdateImagePool
      */
-    DatabaseProcess dp = new DatabaseProcess();
+    DatabaseProcess databaseProcess = new DatabaseProcess();
     public static Vector users = new Vector();
-    Vector v = new Vector();
+    List ipList = new ArrayList();
 
     public UpdateImagePool() {
         initComponents();
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        int wid = getWidth();
-        int heig = getHeight();
-        setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
+        int width = getWidth();
+        int height = getHeight();
+        setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            v = dp.getIPList();
+            ipList = databaseProcess.getIPList();
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Update = new javax.swing.JButton();
@@ -45,7 +46,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Update.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        Update.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Update.setForeground(new java.awt.Color(51, 51, 51));
         Update.setText("Update");
         Update.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +57,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(ulist);
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        Back.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Back.setForeground(new java.awt.Color(51, 51, 51));
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +66,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
             }
         });
 
-        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11)); 
         TryAgain.setForeground(new java.awt.Color(51, 51, 51));
         TryAgain.setText("Try Again");
         TryAgain.setEnabled(false);
@@ -109,39 +110,35 @@ public class UpdateImagePool extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-// TODO add your handling code here:
         try {
             File dir = new File("D:/ImagePool");
             File[] f = dir.listFiles();
 
-
             int f_cnt = 0;
-            int i, j;
-            for (i = 0; i < v.size(); i++) {
-                for (j = 0; j < f.length; j++) {
+            for (int i = 0; i < ipList.size(); i++) {
+                for (int j = 0; j < f.length; j++) {
                     //System.out.println(userList.elementAt(i));
-                    if (new Admin(v.elementAt(i).toString()).sendImage(f[j].toString()) == 1) {
+                    if (new Admin(ipList.get(i).toString()).sendImage(f[j].toString()) == 1) {
                         f_cnt++;
                     }
-
                 }
                 if (f_cnt == f.length) {
-                    JOptionPane.showMessageDialog(null, "All files sent to " + dp.getUser(v.elementAt(i).toString()));
-                    if (users.contains(v.elementAt(i)))
+                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(ipList.get(i)
+                            .toString()));
+                    if (users.contains(ipList.get(i)))
 
-                        users.remove(v.elementAt(i));
-                    dp.setStatus(v.elementAt(i).toString(), "0");
-
-
+                        users.remove(ipList.get(i));
+                    databaseProcess.setStatus(ipList.get(i).toString(), "0");
                 } else {
-                    JOptionPane.showMessageDialog(null, "ImagePool Updation of " + dp.getUser(v.elementAt(i).toString
+                    JOptionPane.showMessageDialog(null, "ImagePool Updation of " + databaseProcess.getUser(ipList.get
+                            (i).toString
                             ()) + " not successful");
-                    if (!(users.contains(v.elementAt(i)))) {
-                        users.add(v.elementAt(i).toString());
-                        dp.setStatus(v.elementAt(i).toString(), "1");
+                    if (!(users.contains(ipList.get(i)))) {
+                        users.add(ipList.get(i).toString());
+                        databaseProcess.setStatus(ipList.get(i).toString(), "1");
                     }
                 }
                 f_cnt = 0;
@@ -156,17 +153,15 @@ public class UpdateImagePool extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-    }//GEN-LAST:event_UpdateActionPerformed
+    }
 
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-// TODO add your handling code here:
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
         new AdminHome().setVisible(true);
-    }//GEN-LAST:event_BackActionPerformed
+    }
 
-    private void TryAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TryAgainActionPerformed
-// TODO add your handling code here:
+    private void TryAgainActionPerformed(ActionEvent evt) {
         try {
             File dir = new File("D:/ImagePool");
             File[] f = dir.listFiles();
@@ -178,24 +173,26 @@ public class UpdateImagePool extends javax.swing.JFrame {
                     }
                 }
                 if (f_cnt == f.length) {
-                    JOptionPane.showMessageDialog(null, "All files sent to " + dp.getUser(users.elementAt(i).toString
+                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(users
+                            .elementAt(i).toString
                             ()));
                     users.remove(i);
-                    dp.setStatus(users.elementAt(i).toString(), "0");
+                    databaseProcess.setStatus(users.elementAt(i).toString(), "0");
                 } else {
-                    JOptionPane.showMessageDialog(null, "ImagePool updation of " + dp.getUser(users.elementAt(i)
+                    JOptionPane.showMessageDialog(null, "ImagePool updation of " + databaseProcess.getUser(users
+                            .elementAt(i)
                             .toString()) + " not successful");
-                    dp.setStatus(users.elementAt(i).toString(), "1");
+                    databaseProcess.setStatus(users.elementAt(i).toString(), "1");
                 }
             }
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-    }//GEN-LAST:event_TryAgainActionPerformed
+    }
 
     public void update(String ip) {
         try {
-            if (dp.getList().contains(ip)) {
+            if (databaseProcess.getList().contains(ip)) {
                 File dir = new File("D:/ImagePool");
                 File[] f = dir.listFiles();
                 int f_cnt = 0;
@@ -208,11 +205,11 @@ public class UpdateImagePool extends javax.swing.JFrame {
                 if (f_cnt == f.length) {
                     if (users.contains(ip))
                         users.remove(ip);
-                    dp.setStatus(ip, "0");
+                    databaseProcess.setStatus(ip, "0");
                 } else {
                     if (!(users.contains(ip)))
                         users.add(ip);
-                    dp.setStatus(ip, "1");
+                    databaseProcess.setStatus(ip, "1");
                 }
             }
         } catch (Exception e) {
@@ -231,12 +228,10 @@ public class UpdateImagePool extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration
     private javax.swing.JButton Back;
     private javax.swing.JButton TryAgain;
     private javax.swing.JButton Update;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList ulist;
-    // End of variables declaration//GEN-END:variables
-
 }

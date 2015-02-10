@@ -12,10 +12,8 @@ public class ChangePassword extends javax.swing.JFrame {
     /**
      * Creates new form ChangePassword
      */
-    DatabaseProcess databaseProcess = new DatabaseProcess();
-    Login login = new Login();
-    String username = Login.getUsername();
-    int k = 0;
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
+    private static String username = Login.getUsername();
 
     public ChangePassword() {
         initComponents();
@@ -149,7 +147,7 @@ public class ChangePassword extends javax.swing.JFrame {
         String np2 = n_pwd2.getPassword().toString();
 
         try {
-
+            int k = 0;
             a = databaseProcess.validate(username);
             if (p.equals(a[0])) {
                 if (np1.equals(np2)) {

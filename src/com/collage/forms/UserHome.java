@@ -3,27 +3,30 @@ package com.collage.forms;
 import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class UserHome extends javax.swing.JFrame {
 
     /**
-     * Creates new form U_home
+     * Creates new form UserHome
      */
     Login ob = new Login();
-    String c = Login.getUsername();
 
     public UserHome() {
         initComponents();
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        int wid = getWidth();
-        int heig = getHeight();
-        setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
+        int width = getWidth();
+        int height = getHeight();
+        setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        uname.setText(c);
+        uname.setText(Login.getUsername());
     }
 
     /**
@@ -48,8 +51,8 @@ public class UserHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 640));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
                 formMouseClicked(evt);
             }
         });
@@ -70,8 +73,8 @@ public class UserHome extends javax.swing.JFrame {
         CreateMessage.setForeground(new java.awt.Color(51, 51, 51));
         CreateMessage.setText("Compose");
         CreateMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        CreateMessage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        CreateMessage.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 CreateMessageActionPerformed(evt);
             }
         });
@@ -79,8 +82,8 @@ public class UserHome extends javax.swing.JFrame {
         Inbox.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Inbox.setForeground(new java.awt.Color(51, 51, 51));
         Inbox.setText("Inbox");
-        Inbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Inbox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 InboxActionPerformed(evt);
             }
         });
@@ -88,8 +91,8 @@ public class UserHome extends javax.swing.JFrame {
         Sent.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Sent.setForeground(new java.awt.Color(51, 51, 51));
         Sent.setText("Sent");
-        Sent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Sent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 SentActionPerformed(evt);
             }
         });
@@ -108,8 +111,8 @@ public class UserHome extends javax.swing.JFrame {
         );
 
         ChangePass.setText("Change Password");
-        ChangePass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        ChangePass.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 ChangePassActionPerformed(evt);
             }
         });
@@ -117,8 +120,8 @@ public class UserHome extends javax.swing.JFrame {
         Settings.add(jSeparator2);
 
         Logout.setText("Logout");
-        Logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Logout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 LogoutActionPerformed(evt);
             }
         });
@@ -193,31 +196,31 @@ public class UserHome extends javax.swing.JFrame {
         pack();
     }
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {
+    private void formMouseClicked(MouseEvent evt) {
 
     }
 
-    private void ChangePassActionPerformed(java.awt.event.ActionEvent evt) {
+    private void ChangePassActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         new ChangePassword().setVisible(true);
     }
 
-    private void CreateMessageActionPerformed(java.awt.event.ActionEvent evt) {
+    private void CreateMessageActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         new CreateMess().setVisible(true);
     }
 
-    private void InboxActionPerformed(java.awt.event.ActionEvent evt) {
+    private void InboxActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         new Inbox().setVisible(true);
     }
 
-    private void SentActionPerformed(java.awt.event.ActionEvent evt) {
+    private void SentActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         new Sent().setVisible(true);
     }
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {
+    private void LogoutActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         new Login().setVisible(true);
     }

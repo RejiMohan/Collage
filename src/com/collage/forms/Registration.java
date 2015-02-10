@@ -1,9 +1,27 @@
 package com.collage.forms;
 
+import com.collage.User;
 import com.collage.database.DatabaseProcess;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,15 +61,15 @@ public class Registration extends JFrame {
         usernameField = new JTextField();
         passwordField = new JPasswordField();
         confirmPasswordField = new JPasswordField();
-        jButton1 = new JButton();
-        jButton2 = new JButton();
+        btnRegister = new JButton();
+        btnClear = new JButton();
         jLabel2 = new JLabel();
         jLabel8 = new JLabel();
         jScrollPane1 = new JScrollPane();
         addressField = new JTextArea();
         jLabel7 = new JLabel();
         emailField = new JTextField();
-        jButton3 = new JButton();
+        btnBack = new JButton();
         jLabel9 = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -72,21 +90,21 @@ public class Registration extends JFrame {
         confirmPasswordLabel.setFont(new Font("Verdana", 0, 11));
         confirmPasswordLabel.setText("Retype Password");
 
-        jButton1.setFont(new Font("Verdana", 0, 11));
-        jButton1.setForeground(new Color(51, 51, 51));
-        jButton1.setText("Register");
-        jButton1.addActionListener(new ActionListener() {
+        btnRegister.setFont(new Font("Verdana", 0, 11));
+        btnRegister.setForeground(new Color(51, 51, 51));
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registerButtonActionPerformed();
             }
         });
 
-        jButton2.setFont(new Font("Verdana", 0, 11));
-        jButton2.setForeground(new Color(51, 51, 51));
-        jButton2.setText("Clear");
-        jButton2.addActionListener(new ActionListener() {
+        btnClear.setFont(new Font("Verdana", 0, 11));
+        btnClear.setForeground(new Color(51, 51, 51));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
@@ -103,12 +121,12 @@ public class Registration extends JFrame {
         jLabel7.setFont(new Font("Verdana", 0, 11));
         jLabel7.setText("E-mail");
 
-        jButton3.setFont(new Font("Verdana", 0, 11));
-        jButton3.setForeground(new Color(51, 51, 51));
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new Font("Verdana", 0, 11));
+        btnBack.setForeground(new Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                backButton3ActionPerformed(evt);
             }
         });
 
@@ -146,13 +164,13 @@ public class Registration extends JFrame {
                                                 .addGap(20, 20, 20))
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton1)
+                                                        .addComponent(btnRegister)
                                                         .addPreferredGap(LayoutStyle.ComponentPlacement
                                                                 .RELATED)
-                                                        .addComponent(jButton2)
+                                                        .addComponent(btnClear)
                                                         .addPreferredGap(LayoutStyle.ComponentPlacement
                                                                 .RELATED)
-                                                        .addComponent(jButton3))
+                                                        .addComponent(btnBack))
                                                 .addComponent(jLabel2)))
                                 .addContainerGap(206, Short.MAX_VALUE))
                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -160,7 +178,7 @@ public class Registration extends JFrame {
                                 .addComponent(jLabel9))
         );
 
-        layout.linkSize(SwingConstants.HORIZONTAL, jButton1, jButton2, jButton3);
+        layout.linkSize(SwingConstants.HORIZONTAL, btnRegister, btnClear, btnBack);
 
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -213,34 +231,25 @@ public class Registration extends JFrame {
                                                         .PREFERRED_SIZE)))
                                 .addGap(59, 59, 59)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton2)
-                                        .addComponent(jButton3))
+                                        .addComponent(btnRegister)
+                                        .addComponent(btnClear)
+                                        .addComponent(btnBack))
                                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        String name;
-        String address;
-        String email;
-        String designation;
-        String username;
-        String password;
-        String confirmPassword;
-        boolean usernameAlreadyExists;
-        //String b[]=new String[3];
+    private void registerButtonActionPerformed() {
         try {
-            name = nameField.getText();
-            address = addressField.getText();
-            email = emailField.getText();
-            designation = designationField.getText();
-            username = usernameField.getText();
-            password = passwordField.getPassword().toString();
-            confirmPassword = confirmPasswordField.getPassword().toString();
-            usernameAlreadyExists = databaseProcess.isAlreadyExistingUsername(username);
+            String name = nameField.getText();
+            String address = addressField.getText();
+            String email = emailField.getText();
+            String designation = designationField.getText();
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+            String confirmPassword = new String(confirmPasswordField.getPassword());
+            boolean usernameAlreadyExists = databaseProcess.isAlreadyExistingUsername(username);
 
             if (usernameAlreadyExists) {
                 JOptionPane.showMessageDialog(this, "Username not available");
@@ -249,9 +258,15 @@ public class Registration extends JFrame {
                     .equals("")) {
                 JOptionPane.showMessageDialog(this, "No field can be left blank");
             } else if (password.equals(confirmPassword)) {
-                int i = databaseProcess.update(name, address, email, designation, username);
-                int j = databaseProcess.updatel(username, password);
-                if (i >= 1) {
+                User user = new User();
+                user.setName(name);
+                user.setAddress(address);
+                user.setEmail(email);
+                user.setDesignation(designation);
+                user.setUsername(username);
+                boolean isSuccess = databaseProcess.insertUser(user);
+                int j = databaseProcess.insertUserInLogin(username, password);
+                if (isSuccess) {
                     JOptionPane.showMessageDialog(this, "Request sent successfully");
                     this.setVisible(false);
                     new Login().setVisible(true);
@@ -264,7 +279,7 @@ public class Registration extends JFrame {
         }
     }
 
-    private void jButton2ActionPerformed(ActionEvent event) {
+    private void clearButtonActionPerformed(ActionEvent event) {
         nameField.setText("");
         addressField.setText("");
         emailField.setText("");
@@ -274,7 +289,7 @@ public class Registration extends JFrame {
         confirmPasswordField.setText("");
     }
 
-    private void jButton3ActionPerformed(ActionEvent event) {
+    private void backButton3ActionPerformed(ActionEvent event) {
         this.setVisible(false);
         new Login().setVisible(true);
     }
@@ -292,9 +307,9 @@ public class Registration extends JFrame {
 
     // Variables declaration
 
-    private JButton jButton1;
-    private JButton jButton2;
-    private JButton jButton3;
+    private JButton btnRegister;
+    private JButton btnClear;
+    private JButton btnBack;
     private JLabel nameLabel;
     private JLabel jLabel2;
     private JLabel designationLabel;
