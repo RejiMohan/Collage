@@ -233,8 +233,8 @@ public class Details extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:.
-        this.hide();
-        new ClientList().show();
+        this.setVisible(false);
+        new ClientList().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -257,8 +257,8 @@ public class Details extends javax.swing.JFrame {
             i = dp.rejectUser(s);
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Removed");
-                this.hide();
-                new ClientList().show();
+                this.setVisible(false);
+                new ClientList().setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(this, "Error");

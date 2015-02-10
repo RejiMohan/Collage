@@ -4,6 +4,8 @@ import com.collage.database.DatabaseProcess;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Registration extends JFrame {
 
@@ -31,79 +33,78 @@ public class Registration extends JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
-        jLabel1 = new JLabel();
-        jLabel3 = new JLabel();
-        jLabel4 = new JLabel();
-        jLabel5 = new JLabel();
-        jLabel6 = new JLabel();
-        name = new JTextField();
-        dsgn = new JTextField();
-        uname = new JTextField();
-        pword = new JPasswordField();
-        pword1 = new JPasswordField();
+        nameLabel = new JLabel();
+        designationLabel = new JLabel();
+        usernameLabel = new JLabel();
+        passwordLabel = new JLabel();
+        confirmPasswordLabel = new JLabel();
+        nameField = new JTextField();
+        designationField = new JTextField();
+        usernameField = new JTextField();
+        passwordField = new JPasswordField();
+        confirmPasswordField = new JPasswordField();
         jButton1 = new JButton();
         jButton2 = new JButton();
         jLabel2 = new JLabel();
         jLabel8 = new JLabel();
         jScrollPane1 = new JScrollPane();
-        adrs = new JTextArea();
+        addressField = new JTextArea();
         jLabel7 = new JLabel();
-        email = new JTextField();
+        emailField = new JTextField();
         jButton3 = new JButton();
         jLabel9 = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 640));
+        setMinimumSize(new Dimension(800, 640));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11));
-        jLabel1.setText("Name");
+        nameLabel.setFont(new Font("Verdana", 0, 11));
+        nameLabel.setText("Name");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11));
-        jLabel3.setText("Designation");
+        designationLabel.setFont(new Font("Verdana", 0, 11));
+        designationLabel.setText("Designation");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 11));
-        jLabel4.setText("Username");
+        usernameLabel.setFont(new Font("Verdana", 0, 11));
+        usernameLabel.setText("Username");
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 11));
-        jLabel5.setText("Password");
+        passwordLabel.setFont(new Font("Verdana", 0, 11));
+        passwordLabel.setText("Password");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 11));
-        jLabel6.setText("Retype Password");
+        confirmPasswordLabel.setFont(new Font("Verdana", 0, 11));
+        confirmPasswordLabel.setText("Retype Password");
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 11));
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new Font("Verdana", 0, 11));
+        jButton1.setForeground(new Color(51, 51, 51));
         jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setFont(new Font("Verdana", 0, 11));
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
+        jButton2.setForeground(new Color(51, 51, 51));
         jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 24));
+        jLabel2.setFont(new Font("Verdana", 1, 24));
         jLabel2.setText("Account Details");
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel8.setFont(new Font("Verdana", 0, 11));
         jLabel8.setText("Address");
 
-        adrs.setColumns(20);
-        adrs.setRows(3);
-        jScrollPane1.setViewportView(adrs);
+        addressField.setColumns(20);
+        addressField.setRows(3);
+        jScrollPane1.setViewportView(addressField);
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel7.setFont(new Font("Verdana", 0, 11));
         jLabel7.setText("E-mail");
 
-        jButton3.setFont(new java.awt.Font("Verdana", 0, 11));
-        jButton3.setForeground(new java.awt.Color(51, 51, 51));
+        jButton3.setFont(new Font("Verdana", 0, 11));
+        jButton3.setForeground(new Color(51, 51, 51));
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,22 +126,22 @@ public class Registration extends JFrame {
                                                 .addGroup(layout.createParallelGroup(GroupLayout
                                                         .Alignment.TRAILING)
                                                         .addComponent(jLabel8)
-                                                        .addComponent(jLabel1)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel4)
+                                                        .addComponent(nameLabel)
+                                                        .addComponent(designationLabel)
+                                                        .addComponent(usernameLabel)
                                                         .addComponent(jLabel7)
-                                                        .addComponent(jLabel5)
-                                                        .addComponent(jLabel6))
+                                                        .addComponent(passwordLabel)
+                                                        .addComponent(confirmPasswordLabel))
                                                 .addGap(32, 32, 32)
                                                 .addGroup(layout.createParallelGroup(GroupLayout
                                                         .Alignment.LEADING, false)
-                                                        .addComponent(pword1)
-                                                        .addComponent(pword)
-                                                        .addComponent(uname)
-                                                        .addComponent(dsgn)
-                                                        .addComponent(email)
+                                                        .addComponent(confirmPasswordField)
+                                                        .addComponent(passwordField)
+                                                        .addComponent(usernameField)
+                                                        .addComponent(designationField)
+                                                        .addComponent(emailField)
                                                         .addComponent(jScrollPane1)
-                                                        .addComponent(name, GroupLayout.PREFERRED_SIZE,
+                                                        .addComponent(nameField, GroupLayout.PREFERRED_SIZE,
                                                                 176, GroupLayout.PREFERRED_SIZE))
                                                 .addGap(20, 20, 20))
                                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -170,44 +171,44 @@ public class Registration extends JFrame {
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
+                                                .addComponent(nameLabel)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel8)
                                                 .addGap(57, 57, 57)
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel3)
+                                                .addComponent(designationLabel)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel4)
+                                                .addComponent(usernameLabel)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel5)
+                                                .addComponent(passwordLabel)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel6))
+                                                .addComponent(confirmPasswordLabel))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(name, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(nameField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE,
                                                         62, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(6, 6, 6)
-                                                .addComponent(email, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(emailField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(dsgn, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(designationField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(uname, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(usernameField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(pword, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pword1, GroupLayout.PREFERRED_SIZE, javax
+                                                .addComponent(confirmPasswordField, GroupLayout.PREFERRED_SIZE, javax
                                                         .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
                                                         .PREFERRED_SIZE)))
                                 .addGap(59, 59, 59)
@@ -222,38 +223,38 @@ public class Registration extends JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        int i = 0, j = 0;
-        String n;
-        String a;
-        String e;
-        String d;
+        String name;
+        String address;
+        String email;
+        String designation;
         String username;
-        String p;
-        String p1;
+        String password;
+        String confirmPassword;
         boolean usernameAlreadyExists;
         //String b[]=new String[3];
         try {
-            n = name.getText();
-            a = adrs.getText();
-            e = email.getText();
-            d = dsgn.getText();
-            username = uname.getText();
-            p = pword.getText();
-            p1 = pword1.getText();
+            name = nameField.getText();
+            address = addressField.getText();
+            email = emailField.getText();
+            designation = designationField.getText();
+            username = usernameField.getText();
+            password = passwordField.getPassword().toString();
+            confirmPassword = confirmPasswordField.getPassword().toString();
             usernameAlreadyExists = databaseProcess.isAlreadyExistingUsername(username);
 
             if (usernameAlreadyExists) {
                 JOptionPane.showMessageDialog(this, "Username not available");
-            } else if (n.equals("") || a.equals("") || e.equals("") || d.equals("") || username.equals("") || p
+            } else if (name.equals("") || address.equals("") || email.equals("") || designation.equals("") ||
+                    username.equals("") || password
                     .equals("")) {
                 JOptionPane.showMessageDialog(this, "No field can be left blank");
-            } else if (p.equals(p1)) {
-                i = databaseProcess.update(n, a, e, d, username);
-                j = databaseProcess.updatel(username, p);
+            } else if (password.equals(confirmPassword)) {
+                int i = databaseProcess.update(name, address, email, designation, username);
+                int j = databaseProcess.updatel(username, password);
                 if (i >= 1) {
                     JOptionPane.showMessageDialog(this, "Request sent successfully");
                     this.setVisible(false);
-                    new Login().show();
+                    new Login().setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Passwords do not match");
@@ -263,17 +264,17 @@ public class Registration extends JFrame {
         }
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        name.setText("");
-        adrs.setText("");
-        email.setText("");
-        dsgn.setText("");
-        uname.setText("");
-        pword.setText("");
-        pword1.setText("");
+    private void jButton2ActionPerformed(ActionEvent event) {
+        nameField.setText("");
+        addressField.setText("");
+        emailField.setText("");
+        designationField.setText("");
+        usernameField.setText("");
+        passwordField.setText("");
+        confirmPasswordField.setText("");
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton3ActionPerformed(ActionEvent event) {
         this.setVisible(false);
         new Login().setVisible(true);
     }
@@ -290,24 +291,25 @@ public class Registration extends JFrame {
     }
 
     // Variables declaration
-    private JTextArea adrs;
-    private JTextField dsgn;
-    private JTextField email;
+
     private JButton jButton1;
     private JButton jButton2;
     private JButton jButton3;
-    private JLabel jLabel1;
+    private JLabel nameLabel;
     private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
+    private JLabel designationLabel;
+    private JLabel usernameLabel;
+    private JLabel passwordLabel;
+    private JLabel confirmPasswordLabel;
     private JLabel jLabel7;
     private JLabel jLabel8;
     private JLabel jLabel9;
     private JScrollPane jScrollPane1;
-    private JTextField name;
-    private JPasswordField pword;
-    private JPasswordField pword1;
-    private JTextField uname;
+    private JTextField nameField;
+    private JTextArea addressField;
+    private JTextField designationField;
+    private JTextField emailField;
+    private JPasswordField passwordField;
+    private JPasswordField confirmPasswordField;
+    private JTextField usernameField;
 }

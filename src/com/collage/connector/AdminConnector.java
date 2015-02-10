@@ -2,8 +2,9 @@ package com.collage.connector;
 
 import com.collage.forms.UpdateImagePool;
 
-import java.io.DataInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -24,13 +25,13 @@ public class AdminConnector implements Runnable {
     class Admin extends Thread {
         Socket socket1 = null;
         InputStream inputStream = null;
-        DataInputStream dataInputStream = null;
+        BufferedReader bufferedReader = null;
 
         public Admin(Socket socket2) {
             try {
                 socket1 = socket2;
                 inputStream = socket2.getInputStream();
-                dataInputStream = new DataInputStream(inputStream);
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             } catch (Exception e) {
                 System.out.println("Exception " + e);
             }
@@ -38,8 +39,8 @@ public class AdminConnector implements Runnable {
 
         public void run() {
             try {
-                if (dataInputStream.readLine().equals("ip")) {
-                    String a = dataInputStream.readLine();
+                if (bufferedReader.readLine().equals("ip")) {
+                    String a = bufferedReader.readLine();
                     new UpdateImagePool().update(a);
                 }
             } catch (Exception e) {
