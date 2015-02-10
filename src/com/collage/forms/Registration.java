@@ -265,7 +265,7 @@ public class Registration extends JFrame {
                 user.setDesignation(designation);
                 user.setUsername(username);
                 boolean isSuccess = databaseProcess.insertUser(user);
-                int j = databaseProcess.insertUserInLogin(username, password);
+                boolean isSuccess2 = databaseProcess.insertUserInLogin(username, password);
                 if (isSuccess) {
                     JOptionPane.showMessageDialog(this, "Request sent successfully");
                     this.setVisible(false);
