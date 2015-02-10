@@ -1,9 +1,6 @@
 package com.collage.fileTransfer;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Calendar;
@@ -28,14 +25,14 @@ public class Server implements Runnable {
     class Receiver extends Thread {
         Socket cs = null;
         InputStream is = null;
-        DataInputStream dis = null;
+        BufferedReader bufferedReader = null;
         FileOutputStream fos = null;
 
         public Receiver(Socket s) {
             try {
                 cs = s;
                 is = cs.getInputStream();
-                dis = new DataInputStream(is);
+                bufferedReader = new BufferedReader(new InputStreamReader(is));
             } catch (Exception e) {
                 System.out.println("Exception " + e);
             }
@@ -46,12 +43,12 @@ public class Server implements Runnable {
                 String t_hr = new String();
                 String t_min = new String();
                 String t_sec = new String();
-                String a = dis.readLine();
+                String a = bufferedReader.readLine();
                 if (a.equals("file")) {
-                    String size = dis.readLine();
+                    String size = bufferedReader.readLine();
                     int len = Integer.parseInt(size);
-                    String fname = dis.readLine();
-                    String rec = dis.readLine();
+                    String fname = bufferedReader.readLine();
+                    String rec = bufferedReader.readLine();
                     System.out.println(rec);
                     File f = new File("./inbox/" + rec);
                     f.mkdirs();

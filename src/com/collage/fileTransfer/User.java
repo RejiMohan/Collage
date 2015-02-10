@@ -1,9 +1,6 @@
 package com.collage.fileTransfer;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -26,14 +23,14 @@ public class User implements Runnable {
     class Receiver extends Thread {
         Socket socket1 = null;
         InputStream inputStream = null;
-        DataInputStream dataInputStream = null;
+        BufferedReader bufferedReader = null;
         FileOutputStream fileOutputStream = null;
 
         public Receiver(Socket aSocket) throws Exception {
             try {
                 socket1 = aSocket;
                 inputStream = socket1.getInputStream();
-                dataInputStream = new DataInputStream(inputStream);
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             } catch (Exception e) {
                 System.out.println("Exception " + e);
             }
@@ -41,9 +38,9 @@ public class User implements Runnable {
 
         public void run() {
             try {
-                if (dataInputStream.readLine().equals("image")) {
-                    int len = Integer.parseInt(dataInputStream.readLine());
-                    String fname = dataInputStream.readLine();
+                if (bufferedReader.readLine().equals("image")) {
+                    int len = Integer.parseInt(bufferedReader.readLine());
+                    String fname = bufferedReader.readLine();
                     File dir = new File("D:/ImagePool");
                     dir.mkdirs();
                     File file = new File("D:/ImagePool/" + fname);

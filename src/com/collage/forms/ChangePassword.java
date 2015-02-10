@@ -142,9 +142,9 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {
         String a[] = new String[3];
-        String p = c_pwd.getText();
-        String np1 = n_pwd1.getText();
-        String np2 = n_pwd2.getText();
+        String p = c_pwd.getPassword().toString();
+        String np1 = n_pwd1.getPassword().toString();
+        String np2 = n_pwd2.getPassword().toString();
 
         try {
 
