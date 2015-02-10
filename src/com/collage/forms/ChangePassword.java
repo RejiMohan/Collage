@@ -142,17 +142,16 @@ public class ChangePassword extends javax.swing.JFrame {
     }
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {
-        String a[] = new String[3];
-        String p = oldPasswordField.getPassword().toString();
-        String np1 = newPasswordField.getPassword().toString();
-        String np2 = confirmPasswordField.getPassword().toString();
+        String a[];
+        String p = new String(oldPasswordField.getPassword());
+        String np1 = new String(newPasswordField.getPassword());
+        String np2 = new String(confirmPasswordField.getPassword());
 
         try {
-            int k = 0;
             a = databaseProcess.validate(username);
             if (p.equals(a[0])) {
                 if (np1.equals(np2)) {
-                    k = databaseProcess.change(username, np1);
+                    int k = databaseProcess.change(username, np1);
                     if (k > 0) {
                         JOptionPane.showMessageDialog(this, "Password Changed");
                         this.setVisible(false);

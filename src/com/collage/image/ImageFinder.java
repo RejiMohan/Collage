@@ -5,7 +5,7 @@ import javax.media.jai.InterpolationNearest;
 import javax.media.jai.JAI;
 import javax.media.jai.iterator.RandomIter;
 import javax.media.jai.iterator.RandomIterFactory;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.awt.image.renderable.ParameterBlock;
@@ -14,8 +14,8 @@ import java.util.Vector;
 
 public class ImageFinder {
 
-    public Color[][] signature;
-    public static final int baseSize = 300;
+    private Color[][] signature;
+    private static final int baseSize = 300;
 
     public ImageFinder() {
 
@@ -109,8 +109,7 @@ public class ImageFinder {
 
     private File[] getOtherImageFiles(File reference) {
         File dir = new File(reference.getAbsolutePath());
-        File[] others = dir.listFiles(new JPEGImageFileFilter());
-        return others;
+        return dir.listFiles(new JPEGImageFileFilter());
     }
 
 
@@ -140,7 +139,7 @@ public class ImageFinder {
             ImageFinder dd = new ImageFinder();
             Steganography obj = new Steganography();
             int x = 0, y = 0, i = 0;
-            String c = new String();
+            String c;
             for (y = 0; y < img.getHeight(); y += 50) {
                 for (x = 0; x < img.getWidth(); x += 50) {
                     c = dd.extractImage(img, x, y);

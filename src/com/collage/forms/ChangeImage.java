@@ -23,7 +23,7 @@ public class ChangeImage extends javax.swing.JFrame {
         setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            cur_img.setIcon(new ImageIcon(new ViewImages().file));
+            cur_img.setIcon(new ImageIcon(ViewImages.file));
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -37,7 +37,7 @@ public class ChangeImage extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        src = new javax.swing.JTextField();
+        sourceTextField = new javax.swing.JTextField();
         Browse = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cur_img = new javax.swing.JLabel();
@@ -60,7 +60,7 @@ public class ChangeImage extends javax.swing.JFrame {
         Browse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Browse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BrowseActionPerformed(evt);
+                browseActionPerformed();
             }
         });
 
@@ -105,7 +105,8 @@ public class ChangeImage extends javax.swing.JFrame {
                                                 .addGap(30, 30, 30)
                                                 .addComponent(jLabel1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(src, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax
+                                                .addComponent(sourceTextField, javax.swing.GroupLayout
+                                                        .PREFERRED_SIZE, 220, javax
                                                         .swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 53,
@@ -135,7 +136,7 @@ public class ChangeImage extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1)
-                                        .addComponent(src, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
+                                        .addComponent(sourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
                                                 .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing
                                                 .GroupLayout.PREFERRED_SIZE))
@@ -156,12 +157,12 @@ public class ChangeImage extends javax.swing.JFrame {
         pack();
     }
 
-    private void BrowseActionPerformed(java.awt.event.ActionEvent evt) {
+    private void browseActionPerformed() {
         JFileChooser jFileChooser = new JFileChooser();
         try {
             jFileChooser.showOpenDialog(this);
             String file = jFileChooser.getSelectedFile().toString();
-            src.setText(file);
+            sourceTextField.setText(file);
             new_img.setIcon(new ImageIcon(file));
         } catch (Exception e) {
             System.out.println("Exception " + e);
@@ -169,25 +170,24 @@ public class ChangeImage extends javax.swing.JFrame {
     }
 
     private void ChangeActionPerformed(java.awt.event.ActionEvent evt) {
-        File f = new File(new ViewImages().file);
-        String fname = f.getName().substring(0, f.getName().indexOf("."));
-        String fpath = f.getParent();
-        String s_path = src.getText();
-        if (new Steganography().encode(src.getText(), new ViewImagePool().c, fpath)) {
+        File file = new File(ViewImages.file);
+        String fileName = file.getName().substring(0, file.getName().indexOf("."));
+        String filePath = file.getParent();
+        String sourcePath = sourceTextField.getText();
+        if (new Steganography().encode(sourceTextField.getText(), new ViewImagePool().c, filePath)) {
             JOptionPane.showMessageDialog(null, "Character Encoded");
         } else {
             JOptionPane.showMessageDialog(null, "Error");
         }
-        File f_src = new File(s_path);
-        String fn = f_src.getName().substring(0, f_src.getName().indexOf("."));
-        File f_new = new File(fpath + "/" + fn + "_new.jpg");
-        f.delete();
-        f_new.renameTo(new File(fpath + "/" + fname + ".jpg"));
+        File sourceFile = new File(sourcePath);
+        String fileName1 = sourceFile.getName().substring(0, sourceFile.getName().indexOf("."));
+        File newFile = new File(filePath + "/" + fileName1 + "_new.jpg");
+        file.delete();
+        newFile.renameTo(new File(filePath + "/" + fileName + ".jpg"));
 
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-
         this.setVisible(false);
         new ViewImages().setVisible(true);
     }
@@ -213,7 +213,7 @@ public class ChangeImage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel new_img;
-    private javax.swing.JTextField src;
+    private javax.swing.JTextField sourceTextField;
 
 
 }

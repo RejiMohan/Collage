@@ -8,10 +8,10 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class UserConnector {
-    Socket socket = null;
-    OutputStream outputStream = null;
-    PrintStream printStream = null;
-    DatabaseProcess dbProcess = new DatabaseProcess();
+    private Socket socket = null;
+    private OutputStream outputStream = null;
+    private PrintStream printStream = null;
+    private DatabaseProcess dbProcess = new DatabaseProcess();
 
     public UserConnector(String ipAddress) {
         try {

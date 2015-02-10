@@ -27,8 +27,8 @@ public class ClientList extends JFrame {
     /**
      * Creates new form ClientList
      */
-    List userList = new ArrayList();
-    DatabaseProcess databaseProcess = new DatabaseProcess();
+    private List userList = new ArrayList();
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
     private static String selectedUser;
 
     public static String getSelectedUser() {

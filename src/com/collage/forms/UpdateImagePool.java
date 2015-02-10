@@ -18,9 +18,9 @@ public class UpdateImagePool extends javax.swing.JFrame {
     /**
      * Creates new form UpdateImagePool
      */
-    DatabaseProcess databaseProcess = new DatabaseProcess();
-    public static Vector users = new Vector();
-    List ipList = new ArrayList();
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
+    private static Vector users = new Vector();
+    private List ipList = new ArrayList();
 
     public UpdateImagePool() {
         initComponents();
@@ -164,15 +164,15 @@ public class UpdateImagePool extends javax.swing.JFrame {
     private void TryAgainActionPerformed(ActionEvent evt) {
         try {
             File dir = new File("D:/ImagePool");
-            File[] f = dir.listFiles();
-            int f_cnt = 0;
+            File[] files = dir.listFiles();
+            int fileCount = 0;
             for (int i = 0; i < users.size(); i++) {
-                for (int j = 0; j < f.length; j++) {
-                    if (new Admin(users.elementAt(i).toString()).sendImage(f[j].toString()) == 1) {
-                        f_cnt++;
+                for (File file : files) {
+                    if (new Admin(users.elementAt(i).toString()).sendImage(file.toString()) == 1) {
+                        fileCount++;
                     }
                 }
-                if (f_cnt == f.length) {
+                if (fileCount == files.length) {
                     JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(users
                             .elementAt(i).toString
                             ()));
@@ -194,15 +194,15 @@ public class UpdateImagePool extends javax.swing.JFrame {
         try {
             if (databaseProcess.getList().contains(ip)) {
                 File dir = new File("D:/ImagePool");
-                File[] f = dir.listFiles();
-                int f_cnt = 0;
+                File[] files = dir.listFiles();
+                int fileCount = 0;
 
-                for (int i = 0; i < f.length; i++) {
-                    if (new Admin(ip).sendImage(f[i].toString()) == 1) {
-                        f_cnt++;
+                for (File file : files) {
+                    if (new Admin(ip).sendImage(file.toString()) == 1) {
+                        fileCount++;
                     }
                 }
-                if (f_cnt == f.length) {
+                if (fileCount == files.length) {
                     if (users.contains(ip))
                         users.remove(ip);
                     databaseProcess.setStatus(ip, "0");

@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class Updates extends javax.swing.JFrame {
 
-    DatabaseProcess dp = new DatabaseProcess();
+    private DatabaseProcess dp = new DatabaseProcess();
 
     /**
      * Creates new form Updates

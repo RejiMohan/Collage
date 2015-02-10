@@ -1,10 +1,13 @@
 package com.collage.imageOper;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 public class ImageOverlay {
-    public static int x = 0, y = 0, z = 0;
+    private static int x = 0;
+    private static int y = 0;
+    private static int z = 0;
 
     public ImageOverlay() {
         x = 0;

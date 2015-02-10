@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Requests extends javax.swing.JFrame {
-    List userList = new ArrayList();
-    DatabaseProcess dp = new DatabaseProcess();
+    private List userList = new ArrayList();
+    private DatabaseProcess dp = new DatabaseProcess();
 
     public Requests() {
         initComponents();

@@ -4,7 +4,8 @@ import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sent extends javax.swing.JFrame {
 
@@ -21,15 +22,15 @@ public class Sent extends javax.swing.JFrame {
         setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            Vector v = new Vector();
+            List userList = new ArrayList();
             File dir = new File("./sent/" + Login.getUsername());
 
-            File[] f = dir.listFiles();
-            for (int i = 0; i < f.length; i++) {
-                System.out.println(f[i].getName());
-                v.add(f[i].getName().substring(0, f[i].getName().indexOf(".")));
+            File[] files = dir.listFiles();
+            for (int i = 0; i < files.length; i++) {
+                System.out.println(files[i].getName());
+                userList.add(files[i].getName().substring(0, files[i].getName().indexOf(".")));
             }
-            u_list.setListData(v);
+            userJList.setListData(userList.toArray());
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -42,7 +43,7 @@ public class Sent extends javax.swing.JFrame {
     private void initComponents() {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        u_list = new javax.swing.JList();
+        userJList = new javax.swing.JList();
         ViewMessage = new javax.swing.JButton();
         Back = new javax.swing.JButton();
 
@@ -51,7 +52,7 @@ public class Sent extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Estrangelo Edessa", 3, 14));
         jLabel1.setText("Sent");
 
-        jScrollPane1.setViewportView(u_list);
+        jScrollPane1.setViewportView(userJList);
 
         ViewMessage.setText("View Message");
         ViewMessage.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,7 @@ public class Sent extends javax.swing.JFrame {
     }
 
     private void ViewMessageActionPerformed(java.awt.event.ActionEvent evt) {
-        r_name = u_list.getSelectedValue().toString();
+        r_name = userJList.getSelectedValue().toString();
         System.out.println("Receiver :" + r_name);
         this.setVisible(false);
         new MessageOut().setVisible(true);
@@ -141,6 +142,6 @@ public class Sent extends javax.swing.JFrame {
     private javax.swing.JButton ViewMessage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList u_list;
+    private javax.swing.JList userJList;
 
 }

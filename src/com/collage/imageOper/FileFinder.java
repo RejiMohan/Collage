@@ -5,19 +5,18 @@ import java.util.Vector;
 
 public class FileFinder {
     public Vector findFile(String ch) {
-        File[] files = null;
         Vector v = new Vector();
         try {
-            int cnt = 0;
-            File dir = new File("D:/ImagePool");
-            File[] f = dir.listFiles();
+            int count = 0;
+            File directory = new File("D:/ImagePool");
+            File[] files = directory.listFiles();
 
-            for (int i = 0; i < f.length; i++) {
-                if (f[i].getName().substring(0, f[i].getName().indexOf(".")).contains(ch)) {
+            for (File file : files) {
+                if (file.getName().substring(0, file.getName().indexOf(".")).contains(ch)) {
                     //System.out.println(f[i].toString());
-                    v.add(f[i]);
-                    cnt++;
-                    if (cnt == 5) {
+                    v.add(file);
+                    count++;
+                    if (count == 5) {
                         return v;
                     }
                 }

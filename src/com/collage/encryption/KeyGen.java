@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.security.spec.AlgorithmParameterSpec;
 
 public class KeyGen implements Serializable {
-    public static SecretKey key;
-    public static Cipher encryptionCipher;
+    private static SecretKey key;
+    private static Cipher encryptionCipher;
 
     public static void main(String[] args) {
         try {
@@ -29,7 +29,7 @@ public class KeyGen implements Serializable {
         System.out.println("Key Generation Successful...");
     }
 
-    public static void keyInit(SecretKey key1) {
+    private static void keyInit(SecretKey key1) {
         byte[] iv = new byte[]
                 {
                         0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f

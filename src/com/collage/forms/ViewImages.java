@@ -14,7 +14,7 @@ public class ViewImages extends javax.swing.JFrame {
      * Creates new form ViewImages
      */
     public static String file = "";
-    Vector f = new Vector();
+    private Vector f = new Vector();
 
     public ViewImages() {
         initComponents();

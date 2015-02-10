@@ -3,8 +3,8 @@ package com.collage.image;
 import com.collage.encryption.Encrypt;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
@@ -26,8 +26,7 @@ public class Steganography {
         try {
             BufferedImage image = user_space(getImage(name));
             decode = decode_text(get_byte_data(image));
-            String m = new Encrypt().decrypter(new String(decode));
-            return (m);
+            return (new Encrypt().decrypter(new String(decode)));
         } catch (Exception e) {
             return "";
         }
@@ -119,7 +118,6 @@ public class Steganography {
                 image[offset] = (byte) ((image[offset] & 0xFE) | b);
             }
         }
-        System.out.println(image);
         return image;
     }
 

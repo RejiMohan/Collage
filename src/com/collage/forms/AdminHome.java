@@ -28,7 +28,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdminHome extends JFrame {
-    private DatabaseProcess databaseProcess = new DatabaseProcess();
 
     /**
      * Creates new form AdminHome
@@ -44,6 +43,7 @@ public class AdminHome extends JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
+        DatabaseProcess databaseProcess = new DatabaseProcess();
         pendingTextField.setText(Integer.toString(databaseProcess.getPendingApprovalCount()));
     }
 
@@ -106,7 +106,7 @@ public class AdminHome extends JFrame {
         pendingTextField.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pendingTextField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                pndngActionPerformed();
+                pendingActionPerformed();
             }
         });
 
@@ -290,7 +290,7 @@ public class AdminHome extends JFrame {
         new Requests().setVisible(true);
     }
 
-    private void pndngActionPerformed() {
+    private void pendingActionPerformed() {
     }
 
     private void viewImagePoolActionPerformed() {

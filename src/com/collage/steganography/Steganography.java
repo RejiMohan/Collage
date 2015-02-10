@@ -1,8 +1,8 @@
 package com.collage.steganography;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
@@ -68,8 +68,8 @@ public class Steganography {
             throw new IllegalArgumentException("File not long enough");
         }
         int add;
-        for (int i = 0; i < addition.length; i++) {
-            add = addition[i];
+        for (byte anAddition : addition) {
+            add = anAddition;
             for (int bit = 7; bit >= 0; bit--, offset++) {
                 int b = (add >>> bit) & 1;
                 img[offset] = (byte) ((img[offset] & 0xFE) | b);
@@ -122,10 +122,8 @@ public class Steganography {
         try {
             BufferedImage image = user_space(ImageIO.read(new File(name)));
             decode = decode_char(get_byte(image));
-            System.out.println(decode);
             System.out.println(new String(decode));
-            String a = new String(decode);
-            return (a);
+            return (new String(decode));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "There is no hidden message in this image!", "Error",

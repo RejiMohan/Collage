@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Encoder {
-    int cnt;
+    private int cnt;
 
     public Encoder() {
         cnt = 1;
@@ -37,7 +37,7 @@ public class Encoder {
         return op;
     }
 
-    public File findFile(String a) {
+    File findFile(String a) {
 
         File dir = new File("D:/ImagePool");
         //Vector f_list=new Vector();

@@ -1,6 +1,6 @@
 package com.collage.fileTransfer;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -8,13 +8,12 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class Admin {
-    private Socket socket = null;
     private OutputStream outputStream = null;
     private PrintStream printStream = null;
 
     public Admin(String ipAddress) {
         try {
-            socket = new Socket(ipAddress, 9080);
+            Socket socket = new Socket(ipAddress, 9080);
             outputStream = socket.getOutputStream();
             printStream = new PrintStream(outputStream);
         } catch (Exception e) {
@@ -23,11 +22,11 @@ public class Admin {
         }
     }
 
-    public int sendImage(String fname) {
+    public int sendImage(String fileName) {
         int i = 0;
-        int ch = 0, cnt = 0;
+        int ch, cnt = 0;
         try {
-            File file = new File(fname);
+            File file = new File(fileName);
             FileInputStream fis = new FileInputStream(file);
             int len = fis.available();
             printStream.println("image");

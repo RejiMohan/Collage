@@ -15,11 +15,11 @@ public class ManageClient extends javax.swing.JFrame {
     /**
      * Creates new form ManageClient
      */
-    DatabaseProcess dp = new DatabaseProcess();
-    List v = new ArrayList();
-    String add = "";
-    String a[] = new String[4];
-    int x = 0;
+    private DatabaseProcess dp = new DatabaseProcess();
+    private List v = new ArrayList();
+    private String add = "";
+    private String[] a = new String[4];
+    private int x = 0;
 
     public ManageClient() {
         initComponents();

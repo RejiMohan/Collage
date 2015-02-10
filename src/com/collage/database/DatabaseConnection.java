@@ -7,10 +7,10 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-    public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    public static final String CONNECTION_URL = "jdbc:mysql://localhost/collage";
-    public static final String USERNAME = "root";
-    public static final String PASSWORD = "root";
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String CONNECTION_URL = "jdbc:mysql://localhost/collage";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
 
     private Connection connection;
     private Statement statement;
