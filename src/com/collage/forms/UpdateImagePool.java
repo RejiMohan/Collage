@@ -3,8 +3,10 @@ package com.collage.forms;
 import com.collage.database.DatabaseProcess;
 import com.collage.fileTransfer.Admin;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.io.File;
 import java.util.Vector;
 
@@ -120,7 +122,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
             int i, j;
             for (i = 0; i < v.size(); i++) {
                 for (j = 0; j < f.length; j++) {
-                    //System.out.println(v.elementAt(i));
+                    //System.out.println(userList.elementAt(i));
                     if (new Admin(v.elementAt(i).toString()).sendImage(f[j].toString()) == 1) {
                         f_cnt++;
                     }
@@ -160,7 +162,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new A_home().setVisible(true);
+        new AdminHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     private void TryAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TryAgainActionPerformed

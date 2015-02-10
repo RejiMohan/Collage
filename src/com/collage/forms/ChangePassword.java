@@ -2,8 +2,10 @@ package com.collage.forms;
 
 import com.collage.database.DatabaseProcess;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 
 public class ChangePassword extends javax.swing.JFrame {
 
@@ -156,9 +158,9 @@ public class ChangePassword extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Password Changed");
                         this.setVisible(false);
                         if (username.equals("admin")) {
-                            new A_home().setVisible(true);
+                            new AdminHome().setVisible(true);
                         } else {
-                            new U_home().setVisible(true);
+                            new UserHome().setVisible(true);
                         }
                     } else {
                         JOptionPane.showMessageDialog(this, "Error");
@@ -185,9 +187,9 @@ public class ChangePassword extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         this.setVisible(false);
         if (Login.getUsername().equals("admin")) {
-            new A_home().setVisible(true);
+            new AdminHome().setVisible(true);
         } else {
-            new U_home().setVisible(true);
+            new UserHome().setVisible(true);
         }
     }
 

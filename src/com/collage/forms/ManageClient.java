@@ -2,10 +2,13 @@ package com.collage.forms;
 
 import com.collage.database.DatabaseProcess;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 public class ManageClient extends javax.swing.JFrame {
 
@@ -13,7 +16,7 @@ public class ManageClient extends javax.swing.JFrame {
      * Creates new form ManageClient
      */
     DatabaseProcess dp = new DatabaseProcess();
-    Vector v = new Vector();
+    List v = new ArrayList();
     String add = "";
     String a[] = new String[4];
     int x = 0;
@@ -29,7 +32,7 @@ public class ManageClient extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        v = dp.listUsers("1");
+        v = dp.listUsers(1);
         for (int i = 0; i < v.size(); i++)
             c_list.addItem(v.get(i));
         try {
@@ -258,7 +261,7 @@ public class ManageClient extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new A_home().setVisible(true);
+        new AdminHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     private void c_listItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_c_listItemStateChanged

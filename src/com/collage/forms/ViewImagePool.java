@@ -1,7 +1,9 @@
 package com.collage.forms;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 
 public class ViewImagePool extends javax.swing.JFrame {
 
@@ -110,7 +112,7 @@ public class ViewImagePool extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new A_home().setVisible(true);
+        new AdminHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     /**

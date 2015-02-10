@@ -6,22 +6,42 @@
 
 package com.collage.forms;
 
+import static java.awt.EventQueue.invokeLater;
+import static javax.swing.GroupLayout.Alignment;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+import static javax.swing.SwingConstants.HORIZONTAL;
+import static javax.swing.SwingConstants.VERTICAL;
+
 import com.collage.connector.AdminConnector;
 import com.collage.connector.UserConnector;
 import com.collage.database.DatabaseProcess;
 import com.collage.fileTransfer.Server;
 import com.collage.fileTransfer.User;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-
-import static java.awt.EventQueue.invokeLater;
-import static javax.swing.GroupLayout.*;
-import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
-import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
-import static javax.swing.SwingConstants.HORIZONTAL;
-import static javax.swing.SwingConstants.VERTICAL;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login extends JFrame {
 
@@ -210,12 +230,12 @@ public class Login extends JFrame {
                     if (a[2].equals("1")) {
                         if (a[1].equals("admin")) {
                             this.setVisible(false);
-                            new A_home().setVisible(true);
+                            new AdminHome().setVisible(true);
                             AdminConnector ob = new AdminConnector();
                         } else {
                             String s_ip = "";
                             this.setVisible(false);
-                            new U_home().setVisible(true);
+                            new UserHome().setVisible(true);
                             Server s = new Server();
                             User user = new User();
                             new UserConnector(s_ip).connectToAdmin();

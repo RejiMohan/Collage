@@ -2,12 +2,15 @@ package com.collage.forms;
 
 import com.collage.database.DatabaseProcess;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Requests extends javax.swing.JFrame {
-    Vector v = new Vector();
+    List v = new ArrayList();
     DatabaseProcess dp = new DatabaseProcess();
 
     public Requests() {
@@ -21,15 +24,12 @@ public class Requests extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        v = dp.listUsers("0");
-        u_list.setListData(v);
+        v = dp.listUsers(0);
+        u_list.setListData(v.toArray());
 
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         Approve = new javax.swing.JButton();
         Back = new javax.swing.JButton();
@@ -49,10 +49,10 @@ public class Requests extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 640));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); 
         jLabel1.setText("Pending Requests");
 
-        Approve.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        Approve.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Approve.setForeground(new java.awt.Color(51, 51, 51));
         Approve.setText("Approve");
         Approve.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        Back.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Back.setForeground(new java.awt.Color(51, 51, 51));
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        Reject.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        Reject.setFont(new java.awt.Font("Verdana", 0, 11)); 
         Reject.setForeground(new java.awt.Color(51, 51, 51));
         Reject.setText("Reject");
         Reject.addActionListener(new java.awt.event.ActionListener() {
@@ -86,21 +86,21 @@ public class Requests extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(u_list);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11)); 
         jLabel8.setText("Address");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); 
         jLabel2.setText("Name");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); 
         jLabel7.setText("E-mail");
 
         dsgn.setEditable(false);
-        dsgn.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        dsgn.setFont(new java.awt.Font("Verdana", 0, 11)); 
         dsgn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         email.setEditable(false);
-        email.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        email.setFont(new java.awt.Font("Verdana", 0, 11)); 
         email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class Requests extends javax.swing.JFrame {
         adrs.setBackground(new java.awt.Color(240, 240, 240));
         adrs.setColumns(20);
         adrs.setEditable(false);
-        adrs.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        adrs.setFont(new java.awt.Font("Verdana", 0, 13)); 
         adrs.setLineWrap(true);
         adrs.setRows(3);
         adrs.setBorder(null);
@@ -119,7 +119,7 @@ public class Requests extends javax.swing.JFrame {
         jScrollPane2.setViewportView(adrs);
 
         name.setEditable(false);
-        name.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        name.setFont(new java.awt.Font("Verdana", 0, 11)); 
         name.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +127,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); 
         jLabel3.setText("Designation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,17 +238,16 @@ public class Requests extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void ApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveActionPerformed
-// TODO add your handling code here:
+    private void ApproveActionPerformed(java.awt.event.ActionEvent evt) {
         int i = 0;
         try {
             i = dp.addUser(u_list.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Approved");
-                v = dp.listUsers("0");
-                u_list.setListData(v);
+                v = dp.listUsers(0);
+                u_list.setListData(v.toArray());
                 name.setText("");
                 adrs.setText("");
                 dsgn.setText("");
@@ -261,24 +260,21 @@ public class Requests extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No user selected");
 
         }
-    }//GEN-LAST:event_ApproveActionPerformed
-
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-// TODO add your handling code here:
-//GEN-LAST:event_BackActionPerformed
-        this.setVisible(false);
-        new A_home().setVisible(true);
     }
 
-    private void RejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RejectActionPerformed
-// TODO add your handling code here:
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
+        this.setVisible(false);
+        new AdminHome().setVisible(true);
+    }
+
+    private void RejectActionPerformed(java.awt.event.ActionEvent evt) {
         int i = 0;
         try {
             i = dp.rejectUser(u_list.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Rejected");
-                v = dp.listUsers("0");
-                u_list.setListData(v);
+                v = dp.listUsers(0);
+                u_list.setListData(v.toArray());
                 name.setText("");
                 adrs.setText("");
                 dsgn.setText("");
@@ -291,10 +287,9 @@ public class Requests extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No user selected");
 
         }
-    }//GEN-LAST:event_RejectActionPerformed
+    }
 
-    private void u_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_u_listMouseClicked
-// TODO add your handling code here:
+    private void u_listMouseClicked(java.awt.event.MouseEvent evt) {
         String a[] = new String[4];
         try {
             String s = u_list.getSelectedValue().toString();
@@ -306,17 +301,13 @@ public class Requests extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-    }//GEN-LAST:event_u_listMouseClicked
+    }
 
-    // TODO add your handling code here:
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    // TODO add your handling code here:
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
 
     /**
@@ -331,7 +322,6 @@ public class Requests extends javax.swing.JFrame {
         );
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Approve;
     private javax.swing.JButton Back;
     private javax.swing.JButton Reject;
@@ -347,6 +337,6 @@ public class Requests extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField name;
     private javax.swing.JList u_list;
-    // End of variables declaration//GEN-END:variables
+
 
 }

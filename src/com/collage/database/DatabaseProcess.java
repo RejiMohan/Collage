@@ -1,6 +1,8 @@
 package com.collage.database;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class DatabaseProcess {
@@ -87,18 +89,26 @@ public class DatabaseProcess {
         return i;
     }
 
-    public Vector listUsers(String status) {
-        Vector v = new Vector();
+    public List listUsers(int status) {
+        ArrayList list = new ArrayList();
         try {
             String query = "select * from login where status='" + status + "' and u_type='user'";
             resultSet = dbConnection.executeQuery(query);
             while (resultSet.next()) {
-                v.add(resultSet.getString(USERNAME));
+                list.add(resultSet.getString(USERNAME));
             }
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        return v;
+        return list;
+    }
+
+    public List getApprovalPendingUserList() {
+        return listUsers(0);
+    }
+
+    public int getPendingApprovalCount() {
+        return listUsers(0).size();
     }
 
     public int addUser(String username) {

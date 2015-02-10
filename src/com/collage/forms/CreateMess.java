@@ -4,13 +4,16 @@ import com.collage.database.DatabaseProcess;
 import com.collage.fileTransfer.Client;
 import com.collage.imageOper.Encoder;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateMess extends javax.swing.JFrame {
 
-    Vector v = new Vector();
+    List v = new ArrayList();
     DatabaseProcess dp = new DatabaseProcess();
     String user = Login.getUsername();
 
@@ -28,7 +31,7 @@ public class CreateMess extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        v = dp.listUsers("1");
+        v = dp.listUsers(1);
         for (int i = 0; i < v.size(); i++) {
             if (v.get(i).toString().equals(user)) {
                 continue;
@@ -183,7 +186,7 @@ public class CreateMess extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new U_home().setVisible(true);
+        new UserHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     /**

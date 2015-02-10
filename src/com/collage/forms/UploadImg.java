@@ -4,8 +4,11 @@ import com.collage.encryption.Encrypt;
 import com.collage.imageOper.FileFinder;
 import com.collage.steganography.Steganography;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.io.File;
 import java.util.Vector;
 
@@ -271,7 +274,7 @@ public class UploadImg extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new A_home().setVisible(true);
+        new AdminHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     private void BrowseSourceActionPerformed(java.awt.event.ActionEvent evt)

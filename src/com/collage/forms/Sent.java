@@ -1,7 +1,8 @@
 package com.collage.forms;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.io.File;
 import java.util.Vector;
 
@@ -131,7 +132,7 @@ public class Sent extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new U_home().setVisible(true);
+        new UserHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     /**

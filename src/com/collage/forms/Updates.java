@@ -2,8 +2,9 @@ package com.collage.forms;
 
 import com.collage.database.DatabaseProcess;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.util.Vector;
 
 public class Updates extends javax.swing.JFrame {
@@ -114,7 +115,7 @@ public class Updates extends javax.swing.JFrame {
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
 // TODO add your handling code here:
         this.setVisible(false);
-        new A_home().setVisible(true);
+        new AdminHome().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     private void TryAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TryAgainActionPerformed
