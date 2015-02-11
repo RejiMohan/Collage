@@ -2,8 +2,9 @@ package com.collage.forms;
 
 import com.collage.image.ImageFinder;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.io.File;
 
 public class MessageIn extends javax.swing.JFrame {

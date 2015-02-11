@@ -10,7 +10,6 @@ import java.net.Socket;
 
 public class AdminConnector implements Runnable {
     private ServerSocket serverSocket = null;
-    private Socket socket = null;
 
     public AdminConnector() {
         try {
@@ -52,7 +51,7 @@ public class AdminConnector implements Runnable {
     public void run() {
         try {
             while (true) {
-                socket = serverSocket.accept();
+                Socket socket = serverSocket.accept();
                 new Admin(socket).start();
             }
         } catch (Exception e) {

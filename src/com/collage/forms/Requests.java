@@ -48,10 +48,10 @@ public class Requests extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 640));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24));
         jLabel1.setText("Pending Requests");
 
-        Approve.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Approve.setFont(new java.awt.Font("Verdana", 0, 11));
         Approve.setForeground(new java.awt.Color(51, 51, 51));
         Approve.setText("Approve");
         Approve.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +60,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Back.setFont(new java.awt.Font("Verdana", 0, 11));
         Back.setForeground(new java.awt.Color(51, 51, 51));
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        Reject.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Reject.setFont(new java.awt.Font("Verdana", 0, 11));
         Reject.setForeground(new java.awt.Color(51, 51, 51));
         Reject.setText("Reject");
         Reject.addActionListener(new java.awt.event.ActionListener() {
@@ -85,21 +85,21 @@ public class Requests extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(u_list);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel8.setText("Address");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel2.setText("Name");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel7.setText("E-mail");
 
         dsgn.setEditable(false);
-        dsgn.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        dsgn.setFont(new java.awt.Font("Verdana", 0, 11));
         dsgn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         email.setEditable(false);
-        email.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        email.setFont(new java.awt.Font("Verdana", 0, 11));
         email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class Requests extends javax.swing.JFrame {
         adrs.setBackground(new java.awt.Color(240, 240, 240));
         adrs.setColumns(20);
         adrs.setEditable(false);
-        adrs.setFont(new java.awt.Font("Verdana", 0, 13)); 
+        adrs.setFont(new java.awt.Font("Verdana", 0, 13));
         adrs.setLineWrap(true);
         adrs.setRows(3);
         adrs.setBorder(null);
@@ -118,7 +118,7 @@ public class Requests extends javax.swing.JFrame {
         jScrollPane2.setViewportView(adrs);
 
         name.setEditable(false);
-        name.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        name.setFont(new java.awt.Font("Verdana", 0, 11));
         name.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +126,7 @@ public class Requests extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel3.setText("Designation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

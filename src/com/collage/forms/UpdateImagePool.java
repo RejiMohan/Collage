@@ -46,7 +46,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Update.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Update.setFont(new java.awt.Font("Verdana", 0, 11));
         Update.setForeground(new java.awt.Color(51, 51, 51));
         Update.setText("Update");
         Update.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +57,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(ulist);
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Back.setFont(new java.awt.Font("Verdana", 0, 11));
         Back.setForeground(new java.awt.Color(51, 51, 51));
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +66,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
             }
         });
 
-        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11));
         TryAgain.setForeground(new java.awt.Color(51, 51, 51));
         TryAgain.setText("Try Again");
         TryAgain.setEnabled(false);
@@ -175,7 +175,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
                 if (fileCount == files.length) {
                     JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(users
                             .elementAt(i).toString
-                            ()));
+                                    ()));
                     users.remove(i);
                     databaseProcess.setStatus(users.elementAt(i).toString(), "0");
                 } else {

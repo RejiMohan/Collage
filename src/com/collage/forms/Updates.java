@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class Updates extends javax.swing.JFrame {
 
-    private DatabaseProcess dp = new DatabaseProcess();
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
 
     /**
      * Creates new form Updates
@@ -22,7 +22,7 @@ public class Updates extends javax.swing.JFrame {
         setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            Vector v = dp.getList();
+            Vector v = databaseProcess.getList();
             ulist.setListData(v);
         } catch (Exception e) {
             System.out.println("Exception " + e);

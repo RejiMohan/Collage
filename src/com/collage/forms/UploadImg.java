@@ -52,13 +52,13 @@ public class UploadImg extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel1.setText("Source Image");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); 
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18));
         jLabel2.setText("Upload Image");
 
-        BrowseSource.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        BrowseSource.setFont(new java.awt.Font("Verdana", 0, 11));
         BrowseSource.setForeground(new java.awt.Color(51, 51, 51));
         BrowseSource.setText("Browse");
         BrowseSource.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -68,13 +68,13 @@ public class UploadImg extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel3.setText("Character");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel4.setText("Destination Path");
 
-        BrowseDestn.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        BrowseDestn.setFont(new java.awt.Font("Verdana", 0, 11));
         BrowseDestn.setForeground(new java.awt.Color(51, 51, 51));
         BrowseDestn.setText("Browse");
         BrowseDestn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -84,7 +84,7 @@ public class UploadImg extends javax.swing.JFrame {
             }
         });
 
-        Upload.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Upload.setFont(new java.awt.Font("Verdana", 0, 11));
         Upload.setForeground(new java.awt.Color(51, 51, 51));
         Upload.setText("Upload");
         Upload.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class UploadImg extends javax.swing.JFrame {
             }
         });
 
-        Clear.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Clear.setFont(new java.awt.Font("Verdana", 0, 11));
         Clear.setForeground(new java.awt.Color(51, 51, 51));
         Clear.setText("Clear");
         Clear.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +102,7 @@ public class UploadImg extends javax.swing.JFrame {
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Back.setFont(new java.awt.Font("Verdana", 0, 11));
         Back.setForeground(new java.awt.Color(51, 51, 51));
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {

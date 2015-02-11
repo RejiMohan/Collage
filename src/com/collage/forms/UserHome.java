@@ -13,8 +13,6 @@ public class UserHome extends javax.swing.JFrame {
     /**
      * Creates new form UserHome
      */
-    Login ob = new Login();
-
     public UserHome() {
         initComponents();
         Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
@@ -57,19 +55,19 @@ public class UserHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18));
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Welcome");
 
         uname.setEditable(false);
-        uname.setFont(new java.awt.Font("Verdana", 1, 16)); 
+        uname.setFont(new java.awt.Font("Verdana", 1, 16));
         uname.setForeground(new java.awt.Color(255, 0, 51));
         uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         uname.setOpaque(false);
 
         jButton1.setText("jButton1");
 
-        CreateMessage.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        CreateMessage.setFont(new java.awt.Font("Verdana", 0, 11));
         CreateMessage.setForeground(new java.awt.Color(51, 51, 51));
         CreateMessage.setText("Compose");
         CreateMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -79,7 +77,7 @@ public class UserHome extends javax.swing.JFrame {
             }
         });
 
-        Inbox.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Inbox.setFont(new java.awt.Font("Verdana", 0, 11));
         Inbox.setForeground(new java.awt.Color(51, 51, 51));
         Inbox.setText("Inbox");
         Inbox.addActionListener(new ActionListener() {
@@ -88,7 +86,7 @@ public class UserHome extends javax.swing.JFrame {
             }
         });
 
-        Sent.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        Sent.setFont(new java.awt.Font("Verdana", 0, 11));
         Sent.setForeground(new java.awt.Color(51, 51, 51));
         Sent.setText("Sent");
         Sent.addActionListener(new ActionListener() {
@@ -98,7 +96,7 @@ public class UserHome extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Documents and Settings\\Sreedutt\\My " +
-                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg")); 
+                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg"));
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

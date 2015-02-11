@@ -60,7 +60,7 @@ public class Details extends javax.swing.JFrame {
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.shadow"));
         setMinimumSize(new java.awt.Dimension(800, 640));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel1.setText("Name");
 
         name.setEditable(false);
@@ -71,7 +71,7 @@ public class Details extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel8.setText("Address");
 
         adrs.setBackground(new java.awt.Color(240, 240, 240));
@@ -83,7 +83,7 @@ public class Details extends javax.swing.JFrame {
         adrs.setMargin(new java.awt.Insets(1, 1, 1, 1));
         jScrollPane1.setViewportView(adrs);
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel7.setText("E-mail");
 
         email.setEditable(false);
@@ -94,14 +94,14 @@ public class Details extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel3.setText("Designation");
 
         dsgn.setEditable(false);
         dsgn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         hdng.setEditable(false);
-        hdng.setFont(new java.awt.Font("Cambria", 3, 18)); 
+        hdng.setFont(new java.awt.Font("Cambria", 3, 18));
         hdng.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         hdng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class Details extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 11));
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("OK");
         jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -120,7 +120,7 @@ public class Details extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 11)); 
+        jButton2.setFont(new java.awt.Font("Verdana", 0, 11));
         jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Remove User");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class Details extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Documents and Settings\\Sreedutt\\My " +
-                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg")); 
+                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

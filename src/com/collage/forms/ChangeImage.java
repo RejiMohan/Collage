@@ -2,15 +2,24 @@ package com.collage.forms;
 
 import com.collage.steganography.Steganography;
 
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.io.File;
 
-public class ChangeImage extends javax.swing.JFrame {
+public class ChangeImage extends JFrame {
 
     /**
      * Creates new form ChangeImage
@@ -23,7 +32,7 @@ public class ChangeImage extends javax.swing.JFrame {
         setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            cur_img.setIcon(new ImageIcon(ViewImages.file));
+            lblCurrentImage.setIcon(new ImageIcon(ViewImages.file));
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -35,122 +44,122 @@ public class ChangeImage extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        sourceTextField = new javax.swing.JTextField();
-        Browse = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        cur_img = new javax.swing.JLabel();
-        new_img = new javax.swing.JLabel();
-        Change = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new JButton();
+        jLabel1 = new JLabel();
+        sourceTextField = new JTextField();
+        btnBrowse = new JButton();
+        jLabel2 = new JLabel();
+        lblCurrentImage = new JLabel();
+        lblNewImage = new JLabel();
+        btnChange = new JButton();
+        btnBack = new JButton();
+        lblChageImage = new JLabel();
 
         jButton1.setText("jButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11));
         jLabel1.setText("Source");
 
-        Browse.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        Browse.setForeground(new java.awt.Color(51, 51, 51));
-        Browse.setText("Browse");
-        Browse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Browse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Browse.addActionListener(new java.awt.event.ActionListener() {
+        btnBrowse.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnBrowse.setForeground(new java.awt.Color(51, 51, 51));
+        btnBrowse.setText("Browse");
+        btnBrowse.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        btnBrowse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseActionPerformed();
             }
         });
 
-        cur_img.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblCurrentImage.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        new_img.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblNewImage.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Change.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        Change.setForeground(new java.awt.Color(51, 51, 51));
-        Change.setText("Change");
-        Change.setBorderPainted(false);
-        Change.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Change.addActionListener(new java.awt.event.ActionListener() {
+        btnChange.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnChange.setForeground(new java.awt.Color(51, 51, 51));
+        btnChange.setText("Change");
+        btnChange.setBorderPainted(false);
+        btnChange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChangeActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("Back");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel3.setText("Change Image");
+        lblChageImage.setFont(new java.awt.Font("Verdana", 1, 14));
+        lblChageImage.setText("Change Image");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(55, 55, 55)
                                                 .addComponent(jLabel2))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(30, 30, 30)
                                                 .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(sourceTextField, javax.swing.GroupLayout
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(sourceTextField, GroupLayout
                                                         .PREFERRED_SIZE, 220, javax
                                                         .swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 53,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnBrowse, GroupLayout.PREFERRED_SIZE, 53,
+                                                        GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(130, 130, 130)
-                                                .addComponent(jLabel3))
+                                                .addComponent(lblChageImage))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(78, 78, 78)
-                                                .addComponent(cur_img, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblCurrentImage, GroupLayout.PREFERRED_SIZE, 100,
+                                                        GroupLayout.PREFERRED_SIZE)
                                                 .addGap(55, 55, 55)
-                                                .addComponent(new_img, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(lblNewImage, GroupLayout.PREFERRED_SIZE, 100,
+                                                        GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(116, 116, 116)
-                                                .addComponent(Change)
+                                                .addComponent(btnChange)
                                                 .addGap(46, 46, 46)
-                                                .addComponent(jButton2)))
+                                                .addComponent(btnBack)))
                                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jLabel3)
+                                .addComponent(lblChageImage)
                                 .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1)
-                                        .addComponent(sourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
-                                                .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing
+                                        .addComponent(sourceTextField, GroupLayout.PREFERRED_SIZE, javax.swing
+                                                .GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnBrowse, GroupLayout.PREFERRED_SIZE, 20, javax.swing
                                                 .GroupLayout.PREFERRED_SIZE))
                                 .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel2)
-                                        .addComponent(cur_img, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax
+                                        .addComponent(lblCurrentImage, GroupLayout.PREFERRED_SIZE, 100, javax
                                                 .swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(new_img, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax
+                                        .addComponent(lblNewImage, GroupLayout.PREFERRED_SIZE, 100, javax
                                                 .swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(Change)
-                                        .addComponent(jButton2))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnChange)
+                                        .addComponent(btnBack))
                                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -163,7 +172,7 @@ public class ChangeImage extends javax.swing.JFrame {
             jFileChooser.showOpenDialog(this);
             String file = jFileChooser.getSelectedFile().toString();
             sourceTextField.setText(file);
-            new_img.setIcon(new ImageIcon(file));
+            lblNewImage.setIcon(new ImageIcon(file));
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -174,7 +183,7 @@ public class ChangeImage extends javax.swing.JFrame {
         String fileName = file.getName().substring(0, file.getName().indexOf("."));
         String filePath = file.getParent();
         String sourcePath = sourceTextField.getText();
-        if (new Steganography().encode(sourceTextField.getText(), new ViewImagePool().c, filePath)) {
+        if (new Steganography().encode(sourceTextField.getText(), ViewImagePool.getSelectedChar(), filePath)) {
             JOptionPane.showMessageDialog(null, "Character Encoded");
         } else {
             JOptionPane.showMessageDialog(null, "Error");
@@ -204,16 +213,14 @@ public class ChangeImage extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Browse;
-    private javax.swing.JButton Change;
-    private javax.swing.JLabel cur_img;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel new_img;
-    private javax.swing.JTextField sourceTextField;
-
-
+    private JButton btnBrowse;
+    private JButton btnChange;
+    private JLabel lblCurrentImage;
+    private JButton jButton1;
+    private JButton btnBack;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel lblChageImage;
+    private JLabel lblNewImage;
+    private JTextField sourceTextField;
 }

@@ -24,10 +24,10 @@ public class ViewImages extends javax.swing.JFrame {
         setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            String s = new ViewImagePool().c;
+            String s = ViewImagePool.getSelectedChar();
             ch.setText(s);
             f = new FileFinder().findFile(s);
-            ImageIcon icon = null;
+            ImageIcon icon;
 
             icon = new ImageIcon(f.elementAt(0).toString());
             img1.setIcon(icon);
