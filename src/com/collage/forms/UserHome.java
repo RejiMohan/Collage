@@ -1,12 +1,35 @@
 package com.collage.forms;
 
-import javax.swing.UIManager;
+import static javax.swing.GroupLayout.Alignment.BASELINE;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+import static javax.swing.border.BevelBorder.RAISED;
+
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 
 public class UserHome extends javax.swing.JFrame {
 
@@ -33,77 +56,76 @@ public class UserHome extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        uname = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        CreateMessage = new javax.swing.JButton();
-        Inbox = new javax.swing.JButton();
-        Sent = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Settings = new javax.swing.JMenu();
-        ChangePass = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        Logout = new javax.swing.JMenuItem();
+        jLabel1 = new JLabel();
+        uname = new JTextField();
+        jButton1 = new JButton();
+        CreateMessage = new JButton();
+        Inbox = new JButton();
+        Sent = new JButton();
+        jSeparator1 = new JSeparator();
+        jLabel2 = new JLabel();
+        jMenuBar1 = new JMenuBar();
+        Settings = new JMenu();
+        ChangePass = new JMenuItem();
+        jSeparator2 = new JPopupMenu.Separator();
+        Logout = new JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 640));
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                formMouseClicked(evt);
+                formMouseClicked();
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18));
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setFont(new Font("Verdana", 1, 18));
+        jLabel1.setForeground(new Color(255, 0, 0));
         jLabel1.setText("Welcome");
 
         uname.setEditable(false);
-        uname.setFont(new java.awt.Font("Verdana", 1, 16));
-        uname.setForeground(new java.awt.Color(255, 0, 51));
-        uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        uname.setFont(new Font("Verdana", 1, 16));
+        uname.setForeground(new Color(255, 0, 51));
+        uname.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
         uname.setOpaque(false);
 
         jButton1.setText("jButton1");
 
-        CreateMessage.setFont(new java.awt.Font("Verdana", 0, 11));
-        CreateMessage.setForeground(new java.awt.Color(51, 51, 51));
+        CreateMessage.setFont(new Font("Verdana", 0, 11));
+        CreateMessage.setForeground(new Color(51, 51, 51));
         CreateMessage.setText("Compose");
-        CreateMessage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        CreateMessage.setBorder(BorderFactory.createBevelBorder(RAISED));
         CreateMessage.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                CreateMessageActionPerformed(evt);
+                createMessage();
             }
         });
 
-        Inbox.setFont(new java.awt.Font("Verdana", 0, 11));
-        Inbox.setForeground(new java.awt.Color(51, 51, 51));
+        Inbox.setFont(new Font("Verdana", 0, 11));
+        Inbox.setForeground(new Color(51, 51, 51));
         Inbox.setText("Inbox");
         Inbox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                InboxActionPerformed(evt);
+                showInbox();
             }
         });
 
-        Sent.setFont(new java.awt.Font("Verdana", 0, 11));
-        Sent.setForeground(new java.awt.Color(51, 51, 51));
+        Sent.setFont(new Font("Verdana", 0, 11));
+        Sent.setForeground(new Color(51, 51, 51));
         Sent.setText("Sent");
         Sent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                SentActionPerformed(evt);
+                sentAction();
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Documents and Settings\\Sreedutt\\My " +
-                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg"));
+        jLabel2.setIcon(new ImageIcon(""/*TODO icon path*/));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new Color(255, 255, 255));
+        jMenuBar1.setBorder(BorderFactory.createBevelBorder(RAISED));
+        jMenuBar1.setForeground(new Color(255, 255, 255));
 
-        Settings.setBackground(new java.awt.Color(255, 255, 255));
-        Settings.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Settings.setBackground(new Color(255, 255, 255));
+        Settings.setBorder(BorderFactory.createEtchedBorder());
         Settings.setText("Settings");
         Settings.setAlignmentX(100
         );
@@ -111,7 +133,7 @@ public class UserHome extends javax.swing.JFrame {
         ChangePass.setText("Change Password");
         ChangePass.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                ChangePassActionPerformed(evt);
+                changePassword();
             }
         });
         Settings.add(ChangePass);
@@ -120,7 +142,7 @@ public class UserHome extends javax.swing.JFrame {
         Logout.setText("Logout");
         Logout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                LogoutActionPerformed(evt);
+                logout();
             }
         });
         Settings.add(Logout);
@@ -132,60 +154,54 @@ public class UserHome extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(28, 28, 28)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                                .Alignment.TRAILING, false)
-                                                                .addComponent(Sent, javax.swing.GroupLayout.Alignment
-                                                                        .LEADING, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(Inbox, javax.swing.GroupLayout
-                                                                        .Alignment.LEADING, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addComponent(CreateMessage, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE, 72, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(LEADING)
+                                                        .addGroup(layout.createParallelGroup(TRAILING, false)
+                                                                .addComponent(Sent,
+                                                                        LEADING,
+                                                                        DEFAULT_SIZE,
+                                                                        DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(Inbox, LEADING,
+                                                                        DEFAULT_SIZE,
+                                                                        DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(CreateMessage,
+                                                                PREFERRED_SIZE, 72,
+                                                                PREFERRED_SIZE)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jSeparator1, PREFERRED_SIZE,
+                                                        111, PREFERRED_SIZE)))
                                 .addContainerGap(288, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(86, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(RELATED)
+                                .addComponent(uname, PREFERRED_SIZE, 79, PREFERRED_SIZE)
                                 .addGap(66, 66, 66)
                                 .addComponent(jLabel2))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.BASELINE)
+                                                .addGroup(layout.createParallelGroup(BASELINE)
                                                         .addComponent(jLabel1)
-                                                        .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing
-                                                                        .GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(uname, PREFERRED_SIZE,
+                                                                DEFAULT_SIZE, PREFERRED_SIZE))
                                                 .addGap(39, 39, 39)
-                                                .addComponent(CreateMessage, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(CreateMessage, PREFERRED_SIZE,
+                                                        28, PREFERRED_SIZE)
+                                                .addPreferredGap(UNRELATED)
+                                                .addComponent(jSeparator1, PREFERRED_SIZE, 6,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(UNRELATED)
                                                 .addComponent(Inbox)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(RELATED)
                                                 .addComponent(Sent))
                                         .addComponent(jLabel2))
                                 .addContainerGap(133, Short.MAX_VALUE))
@@ -194,31 +210,31 @@ public class UserHome extends javax.swing.JFrame {
         pack();
     }
 
-    private void formMouseClicked(MouseEvent evt) {
+    private void formMouseClicked() {
 
     }
 
-    private void ChangePassActionPerformed(ActionEvent evt) {
+    private void changePassword() {
         this.setVisible(false);
         new ChangePassword().setVisible(true);
     }
 
-    private void CreateMessageActionPerformed(ActionEvent evt) {
+    private void createMessage() {
         this.setVisible(false);
         new CreateMess().setVisible(true);
     }
 
-    private void InboxActionPerformed(ActionEvent evt) {
+    private void showInbox() {
         this.setVisible(false);
         new Inbox().setVisible(true);
     }
 
-    private void SentActionPerformed(ActionEvent evt) {
+    private void sentAction() {
         this.setVisible(false);
         new Sent().setVisible(true);
     }
 
-    private void LogoutActionPerformed(ActionEvent evt) {
+    private void logout() {
         this.setVisible(false);
         new Login().setVisible(true);
     }
@@ -235,18 +251,18 @@ public class UserHome extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JMenuItem ChangePass;
-    private javax.swing.JButton CreateMessage;
-    private javax.swing.JButton Inbox;
-    private javax.swing.JMenuItem Logout;
-    private javax.swing.JButton Sent;
-    private javax.swing.JMenu Settings;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JTextField uname;
+    private JMenuItem ChangePass;
+    private JButton CreateMessage;
+    private JButton Inbox;
+    private JMenuItem Logout;
+    private JButton Sent;
+    private JMenu Settings;
+    private JButton jButton1;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JMenuBar jMenuBar1;
+    private JSeparator jSeparator1;
+    private JPopupMenu.Separator jSeparator2;
+    private JTextField uname;
 
 }

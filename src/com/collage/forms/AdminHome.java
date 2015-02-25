@@ -1,9 +1,22 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,14 +31,8 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import com.collage.database.DatabaseProcess;
 
 public class AdminHome extends JFrame {
 
@@ -82,11 +89,11 @@ public class AdminHome extends JFrame {
         setMinimumSize(new Dimension(800, 640));
 
         jLabel2.setBackground(new Color(255, 255, 255));
-        jLabel2.setFont(new Font("Verdana", 1, 16)); // NOI18N
+        jLabel2.setFont(new Font("Verdana", 1, 16));
         jLabel2.setForeground(new Color(255, 51, 0));
         jLabel2.setText("Welcome admin");
 
-        btnView.setFont(new Font("Verdana", 0, 11)); // NOI18N
+        btnView.setFont(new Font("Verdana", 0, 11));
         btnView.setForeground(new Color(51, 51, 51));
         btnView.setText("viewButton");
         btnView.setBorder(new SoftBevelBorder(BevelBorder.RAISED, new java.awt
@@ -97,7 +104,7 @@ public class AdminHome extends JFrame {
             }
         });
 
-        pendingLabel.setFont(new Font("Verdana", 1, 14)); // NOI18N
+        pendingLabel.setFont(new Font("Verdana", 1, 14));
         pendingLabel.setText("Pending Requests : ");
 
         pendingTextField.setEditable(false);
@@ -110,12 +117,10 @@ public class AdminHome extends JFrame {
             }
         });
 
-        jLabel4.setIcon(new ImageIcon("C:\\Documents and Settings\\Sreedutt\\My " +
-                "Documents\\NetBeansProjects\\Collage Steganography\\src\\Forms\\Img\\images.jpg")); // NOI18N
+        jLabel4.setIcon(new ImageIcon("")); //TODO icon loaction
 
         jMenuBar1.setBackground(new Color(255, 255, 255));
-        jMenuBar1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, new java
-                .awt.Color(51, 204, 255), null));
+        jMenuBar1.setBorder(new SoftBevelBorder(BevelBorder.RAISED, new Color(51, 204, 255), null));
 
         jMenu1.setBackground(new Color(255, 255, 255));
         jMenu1.setBorder(BorderFactory.createEtchedBorder());
@@ -212,41 +217,40 @@ public class AdminHome extends JFrame {
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                layout.createParallelGroup(LEADING)
+                        .addGroup(TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(197, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, PREFERRED_SIZE, 83, PREFERRED_SIZE)
                                 .addGap(50, 50, 50))
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(114, 114, 114)
                                 .addComponent(pendingLabel)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pendingTextField, GroupLayout.PREFERRED_SIZE, 51, GroupLayout
-                                        .PREFERRED_SIZE)
+                                .addComponent(pendingTextField, PREFERRED_SIZE, 51,
+                                        PREFERRED_SIZE)
                                 .addContainerGap(186, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(171, 171, 171)
-                                .addComponent(btnView, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnView, PREFERRED_SIZE, 58, PREFERRED_SIZE)
                                 .addContainerGap(281, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 36,
-                                                        GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel2, PREFERRED_SIZE, 36,
+                                                        PREFERRED_SIZE)
                                                 .addGap(72, 72, 72)
-                                                .addGroup(layout.createParallelGroup(GroupLayout
-                                                        .Alignment.BASELINE)
+                                                .addGroup(layout.createParallelGroup(
+                                                        Alignment.BASELINE)
                                                         .addComponent(pendingLabel)
-                                                        .addComponent(pendingTextField, GroupLayout.PREFERRED_SIZE,
-                                                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 77, javax
-                                                .swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(pendingTextField, PREFERRED_SIZE,
+                                                                DEFAULT_SIZE, PREFERRED_SIZE)))
+                                        .addComponent(jLabel4, PREFERRED_SIZE, 77, PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
                                 .addComponent(btnView)
                                 .addContainerGap(82, Short.MAX_VALUE))
@@ -262,7 +266,7 @@ public class AdminHome extends JFrame {
 
     private void uploadImageActionPerformed() {
         this.setVisible(false);
-        new UploadImg().setVisible(true);
+        new UploadImage().setVisible(true);
     }
 
     private void changePasswordActionPerformed() {

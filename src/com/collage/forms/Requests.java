@@ -1,13 +1,34 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
+import static javax.swing.BorderFactory.createEmptyBorder;
+import static javax.swing.GroupLayout.Alignment.BASELINE;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+import static javax.swing.SwingConstants.HORIZONTAL;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+
+import com.collage.database.DatabaseProcess;
 
 public class Requests extends javax.swing.JFrame {
     private List userList = new ArrayList();
@@ -25,213 +46,199 @@ public class Requests extends javax.swing.JFrame {
             System.out.println("Exception " + e);
         }
         userList = dp.listUsers(0);
-        u_list.setListData(userList.toArray());
+        userJlist.setListData(userList.toArray());
     }
 
     private void initComponents() {
-        jLabel1 = new javax.swing.JLabel();
-        Approve = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
-        Reject = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        u_list = new javax.swing.JList();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        dsgn = new javax.swing.JTextField();
-        email = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        adrs = new javax.swing.JTextArea();
-        name = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new JLabel();
+        btnApprove = new JButton();
+        btnBack = new JButton();
+        btnReject = new JButton();
+        jScrollPane1 = new JScrollPane();
+        userJlist = new JList();
+        jLabel8 = new JLabel();
+        jLabel2 = new JLabel();
+        jLabel7 = new JLabel();
+        designationField = new JTextField();
+        emailField = new JTextField();
+        jScrollPane2 = new JScrollPane();
+        addressTextArea = new JTextArea();
+        nameField = new JTextField();
+        jLabel3 = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 640));
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(800, 640));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24));
+        jLabel1.setFont(new Font("Verdana", 1, 24));
         jLabel1.setText("Pending Requests");
 
-        Approve.setFont(new java.awt.Font("Verdana", 0, 11));
-        Approve.setForeground(new java.awt.Color(51, 51, 51));
-        Approve.setText("Approve");
-        Approve.addActionListener(new java.awt.event.ActionListener() {
+        btnApprove.setFont(new Font("Verdana", 0, 11));
+        btnApprove.setForeground(new Color(51, 51, 51));
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApproveActionPerformed(evt);
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11));
-        Back.setForeground(new java.awt.Color(51, 51, 51));
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new Font("Verdana", 0, 11));
+        btnBack.setForeground(new Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);
             }
         });
 
-        Reject.setFont(new java.awt.Font("Verdana", 0, 11));
-        Reject.setForeground(new java.awt.Color(51, 51, 51));
-        Reject.setText("Reject");
-        Reject.addActionListener(new java.awt.event.ActionListener() {
+        btnReject.setFont(new Font("Verdana", 0, 11));
+        btnReject.setForeground(new Color(51, 51, 51));
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RejectActionPerformed(evt);
             }
         });
 
-        u_list.addMouseListener(new java.awt.event.MouseAdapter() {
+        userJlist.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 u_listMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(u_list);
+        jScrollPane1.setViewportView(userJlist);
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel8.setFont(new Font("Verdana", 0, 11));
         jLabel8.setText("Address");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel2.setFont(new Font("Verdana", 0, 11));
         jLabel2.setText("Name");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel7.setFont(new Font("Verdana", 0, 11));
         jLabel7.setText("E-mail");
 
-        dsgn.setEditable(false);
-        dsgn.setFont(new java.awt.Font("Verdana", 0, 11));
-        dsgn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        designationField.setEditable(false);
+        designationField.setFont(new Font("Verdana", 0, 11));
+        designationField.setBorder(createEmptyBorder(1, 1, 1, 1));
 
-        email.setEditable(false);
-        email.setFont(new java.awt.Font("Verdana", 0, 11));
-        email.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        email.addActionListener(new java.awt.event.ActionListener() {
+        emailField.setEditable(false);
+        emailField.setFont(new Font("Verdana", 0, 11));
+        emailField.setBorder(createEmptyBorder(1, 1, 1, 1));
+        emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
 
-        adrs.setBackground(new java.awt.Color(240, 240, 240));
-        adrs.setColumns(20);
-        adrs.setEditable(false);
-        adrs.setFont(new java.awt.Font("Verdana", 0, 13));
-        adrs.setLineWrap(true);
-        adrs.setRows(3);
-        adrs.setBorder(null);
-        adrs.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        jScrollPane2.setViewportView(adrs);
+        addressTextArea.setBackground(new Color(240, 240, 240));
+        addressTextArea.setColumns(20);
+        addressTextArea.setEditable(false);
+        addressTextArea.setFont(new Font("Verdana", 0, 13));
+        addressTextArea.setLineWrap(true);
+        addressTextArea.setRows(3);
+        addressTextArea.setBorder(null);
+        addressTextArea.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        jScrollPane2.setViewportView(addressTextArea);
 
-        name.setEditable(false);
-        name.setFont(new java.awt.Font("Verdana", 0, 11));
-        name.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        name.addActionListener(new java.awt.event.ActionListener() {
+        nameField.setEditable(false);
+        nameField.setFont(new Font("Verdana", 0, 11));
+        nameField.setBorder(createEmptyBorder(1, 1, 1, 1));
+        nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11));
+        jLabel3.setFont(new Font("Verdana", 0, 11));
         jLabel3.setText("Designation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.TRAILING)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        186, PREFERRED_SIZE)
+                                                .addGroup(layout.createParallelGroup(TRAILING)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(135, 135, 135)
-                                                                .addGroup(layout.createParallelGroup(javax.swing
-                                                                        .GroupLayout.Alignment.TRAILING)
+                                                                .addGroup(layout.createParallelGroup(TRAILING)
                                                                         .addComponent(jLabel8)
                                                                         .addComponent(jLabel2)
                                                                         .addComponent(jLabel3)
                                                                         .addComponent(jLabel7))
                                                                 .addGap(34, 34, 34)
-                                                                .addGroup(layout.createParallelGroup(javax.swing
-                                                                        .GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(dsgn)
-                                                                        .addComponent(email)
+                                                                .addGroup(layout.createParallelGroup(LEADING, false)
+                                                                        .addComponent(designationField)
+                                                                        .addComponent(emailField)
                                                                         .addComponent(jScrollPane2)
-                                                                        .addComponent(name, javax.swing.GroupLayout
-                                                                                .PREFERRED_SIZE, 176, javax.swing
-                                                                                .GroupLayout.PREFERRED_SIZE)))
+                                                                        .addComponent(nameField,
+                                                                                PREFERRED_SIZE, 176, PREFERRED_SIZE)))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle
-                                                                        .ComponentPlacement.RELATED)
-                                                                .addComponent(Approve, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addPreferredGap(RELATED)
+                                                                .addComponent(btnApprove,
+                                                                        DEFAULT_SIZE,
+                                                                        DEFAULT_SIZE, Short.MAX_VALUE)
                                                                 .addGap(15, 15, 15)
-                                                                .addComponent(Reject)
-                                                                .addPreferredGap(javax.swing.LayoutStyle
-                                                                        .ComponentPlacement.UNRELATED)
-                                                                .addComponent(Back)))
+                                                                .addComponent(btnReject)
+                                                                .addPreferredGap(UNRELATED)
+                                                                .addComponent(btnBack)))
                                                 .addContainerGap())
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                        .addGroup(TRAILING, layout
                                                 .createSequentialGroup()
                                                 .addComponent(jLabel1)
                                                 .addGap(133, 133, 133))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, Approve, Back, Reject);
+        layout.linkSize(HORIZONTAL, btnApprove, btnBack, btnReject);
 
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
                                 .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(102, 102, 102)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.BASELINE)
+                                                .addGroup(layout.createParallelGroup(BASELINE)
                                                         .addComponent(jLabel2)
-                                                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing
-                                                                        .GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING)
+                                                        .addComponent(nameField, PREFERRED_SIZE,
+                                                                DEFAULT_SIZE, PREFERRED_SIZE))
+                                                .addPreferredGap(RELATED)
+                                                .addGroup(layout.createParallelGroup(LEADING)
                                                         .addComponent(jLabel8)
-                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE, 62, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING)
+                                                        .addComponent(jScrollPane2,
+                                                                PREFERRED_SIZE, 62,
+                                                                PREFERRED_SIZE))
+                                                .addGroup(layout.createParallelGroup(LEADING)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(10, 10, 10)
                                                                 .addComponent(jLabel7))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(6, 6, 6)
-                                                                .addComponent(email, javax.swing.GroupLayout
-                                                                        .PREFERRED_SIZE, javax.swing.GroupLayout
-                                                                        .DEFAULT_SIZE, javax.swing.GroupLayout
-                                                                        .PREFERRED_SIZE)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.BASELINE)
+                                                                .addComponent(emailField,
+                                                                        PREFERRED_SIZE,
+                                                                        DEFAULT_SIZE,
+                                                                        PREFERRED_SIZE)))
+                                                .addPreferredGap(RELATED)
+                                                .addGroup(layout.createParallelGroup(BASELINE)
                                                         .addComponent(jLabel3)
-                                                        .addComponent(dsgn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing
-                                                                        .GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        .addComponent(designationField, PREFERRED_SIZE,
+                                                                DEFAULT_SIZE, PREFERRED_SIZE))
+                                                .addPreferredGap(RELATED,
                                                         94, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING, false)
-                                                        .addComponent(Approve)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
-                                                                .createParallelGroup(javax.swing.GroupLayout
-                                                                        .Alignment.BASELINE)
-                                                                .addComponent(Reject)
-                                                                .addComponent(Back)))
+                                                .addGroup(layout.createParallelGroup(LEADING, false)
+                                                        .addComponent(btnApprove)
+                                                        .addGroup(TRAILING, layout
+                                                                .createParallelGroup(BASELINE)
+                                                                .addComponent(btnReject)
+                                                                .addComponent(btnBack)))
                                                 .addGap(67, 67, 67))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(59, 59, 59)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                .addComponent(jScrollPane1, DEFAULT_SIZE,
                                                         338, Short.MAX_VALUE)
                                                 .addGap(22, 22, 22))))
         );
@@ -241,15 +248,15 @@ public class Requests extends javax.swing.JFrame {
     private void ApproveActionPerformed(java.awt.event.ActionEvent evt) {
         int i = 0;
         try {
-            i = dp.addUser(u_list.getSelectedValue().toString());
+            i = dp.addUser(userJlist.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Approved");
                 userList = dp.listUsers(0);
-                u_list.setListData(userList.toArray());
-                name.setText("");
-                adrs.setText("");
-                dsgn.setText("");
-                email.setText("");
+                userJlist.setListData(userList.toArray());
+                nameField.setText("");
+                addressTextArea.setText("");
+                designationField.setText("");
+                emailField.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Error");
             }
@@ -266,15 +273,15 @@ public class Requests extends javax.swing.JFrame {
     private void RejectActionPerformed(java.awt.event.ActionEvent evt) {
         int i = 0;
         try {
-            i = dp.rejectUser(u_list.getSelectedValue().toString());
+            i = dp.rejectUser(userJlist.getSelectedValue().toString());
             if (i > 0) {
                 JOptionPane.showMessageDialog(this, "User Rejected");
                 userList = dp.listUsers(0);
-                u_list.setListData(userList.toArray());
-                name.setText("");
-                adrs.setText("");
-                dsgn.setText("");
-                email.setText("");
+                userJlist.setListData(userList.toArray());
+                nameField.setText("");
+                addressTextArea.setText("");
+                designationField.setText("");
+                emailField.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Error");
             }
@@ -286,12 +293,12 @@ public class Requests extends javax.swing.JFrame {
     private void u_listMouseClicked(java.awt.event.MouseEvent evt) {
         String a[] = new String[4];
         try {
-            String s = u_list.getSelectedValue().toString();
-            a = dp.showDetails(s);
-            name.setText(a[0]);
-            adrs.setText(a[1]);
-            email.setText(a[2]);
-            dsgn.setText(a[3]);
+            String s = userJlist.getSelectedValue().toString();
+            a = dp.getUserDetails(s);
+            nameField.setText(a[0]);
+            addressTextArea.setText(a[1]);
+            emailField.setText(a[2]);
+            designationField.setText(a[3]);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -316,19 +323,19 @@ public class Requests extends javax.swing.JFrame {
         );
     }
 
-    private javax.swing.JButton Approve;
-    private javax.swing.JButton Back;
-    private javax.swing.JButton Reject;
-    private javax.swing.JTextArea adrs;
-    private javax.swing.JTextField dsgn;
-    private javax.swing.JTextField email;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField name;
-    private javax.swing.JList u_list;
+    private JButton btnApprove;
+    private JButton btnBack;
+    private JButton btnReject;
+    private JTextArea addressTextArea;
+    private JTextField designationField;
+    private JTextField emailField;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JLabel jLabel7;
+    private JLabel jLabel8;
+    private JScrollPane jScrollPane1;
+    private JScrollPane jScrollPane2;
+    private JTextField nameField;
+    private JList userJlist;
 }

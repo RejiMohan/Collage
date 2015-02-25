@@ -1,7 +1,21 @@
 package com.collage.forms;
 
-import com.collage.User;
-import com.collage.database.DatabaseProcess;
+import static javax.swing.GroupLayout.Alignment.BASELINE;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+import static javax.swing.SwingConstants.HORIZONTAL;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -13,17 +27,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import com.collage.User;
+import com.collage.database.DatabaseProcess;
 
 public class Registration extends JFrame {
 
@@ -136,13 +144,12 @@ public class Registration extends JFrame {
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(148, 148, 148)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(GroupLayout
-                                                        .Alignment.TRAILING)
+                                                .addGroup(layout.createParallelGroup(TRAILING)
                                                         .addComponent(jLabel8)
                                                         .addComponent(nameLabel)
                                                         .addComponent(designationLabel)
@@ -151,86 +158,77 @@ public class Registration extends JFrame {
                                                         .addComponent(passwordLabel)
                                                         .addComponent(confirmPasswordLabel))
                                                 .addGap(32, 32, 32)
-                                                .addGroup(layout.createParallelGroup(GroupLayout
-                                                        .Alignment.LEADING, false)
+                                                .addGroup(layout.createParallelGroup(LEADING, false)
                                                         .addComponent(confirmPasswordField)
                                                         .addComponent(passwordField)
                                                         .addComponent(usernameField)
                                                         .addComponent(designationField)
                                                         .addComponent(emailField)
                                                         .addComponent(jScrollPane1)
-                                                        .addComponent(nameField, GroupLayout.PREFERRED_SIZE,
-                                                                176, GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(nameField, PREFERRED_SIZE,
+                                                                176, PREFERRED_SIZE))
                                                 .addGap(20, 20, 20))
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(LEADING)
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addComponent(btnRegister)
-                                                        .addPreferredGap(LayoutStyle.ComponentPlacement
-                                                                .RELATED)
+                                                        .addPreferredGap(RELATED)
                                                         .addComponent(btnClear)
-                                                        .addPreferredGap(LayoutStyle.ComponentPlacement
-                                                                .RELATED)
+                                                        .addPreferredGap(RELATED)
                                                         .addComponent(btnBack))
                                                 .addComponent(jLabel2)))
                                 .addContainerGap(206, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(598, Short.MAX_VALUE)
                                 .addComponent(jLabel9))
         );
 
-        layout.linkSize(SwingConstants.HORIZONTAL, btnRegister, btnClear, btnBack);
+        layout.linkSize(HORIZONTAL, btnRegister, btnClear, btnBack);
 
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(31, 31, 31)
                                 .addComponent(jLabel2)
                                 .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(nameLabel)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(RELATED)
                                                 .addComponent(jLabel8)
                                                 .addGap(57, 57, 57)
                                                 .addComponent(jLabel7)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(RELATED)
                                                 .addComponent(designationLabel)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(RELATED)
                                                 .addComponent(usernameLabel)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(RELATED)
                                                 .addComponent(passwordLabel)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addPreferredGap(UNRELATED)
                                                 .addComponent(confirmPasswordLabel))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(nameField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE,
-                                                        62, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(nameField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(RELATED)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        62, PREFERRED_SIZE)
                                                 .addGap(6, 6, 6)
-                                                .addComponent(emailField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(designationField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(usernameField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(confirmPasswordField, GroupLayout.PREFERRED_SIZE, javax
-                                                        .swing.GroupLayout.DEFAULT_SIZE, GroupLayout
-                                                        .PREFERRED_SIZE)))
+                                                .addComponent(emailField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(RELATED)
+                                                .addComponent(designationField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(RELATED)
+                                                .addComponent(usernameField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(RELATED)
+                                                .addComponent(passwordField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)
+                                                .addPreferredGap(UNRELATED)
+                                                .addComponent(confirmPasswordField, PREFERRED_SIZE, DEFAULT_SIZE,
+                                                        PREFERRED_SIZE)))
                                 .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(BASELINE)
                                         .addComponent(btnRegister)
                                         .addComponent(btnClear)
                                         .addComponent(btnBack))

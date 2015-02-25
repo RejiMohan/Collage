@@ -1,11 +1,24 @@
 package com.collage.forms;
 
-import javax.swing.UIManager;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 
 public class Sent extends javax.swing.JFrame {
 
@@ -41,87 +54,84 @@ public class Sent extends javax.swing.JFrame {
      * initialize the form.
      */
     private void initComponents() {
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        userJList = new javax.swing.JList();
-        ViewMessage = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        jScrollPane1 = new JScrollPane();
+        userJList = new JList();
+        btnViewMessage = new JButton();
+        btnBack = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Estrangelo Edessa", 3, 14));
         jLabel1.setText("Sent");
 
         jScrollPane1.setViewportView(userJList);
 
-        ViewMessage.setText("View Message");
-        ViewMessage.addActionListener(new java.awt.event.ActionListener() {
+        btnViewMessage.setText("View Message");
+        btnViewMessage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewMessageActionPerformed(evt);
+                ViewMessageActionPerformed();
             }
         });
 
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                BackActionPerformed();
             }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING, false)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        136, PREFERRED_SIZE)
+                                                .addGroup(layout.createParallelGroup(LEADING, false)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(83, 83, 83)
-                                                                .addComponent(ViewMessage))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .addComponent(btnViewMessage))
+                                                        .addGroup(TRAILING, layout
                                                                 .createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle
-                                                                        .ComponentPlacement.RELATED, javax.swing
-                                                                        .GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(Back)
+                                                                .addPreferredGap(RELATED, DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(btnBack)
                                                                 .addGap(25, 25, 25))))
                                         .addComponent(jLabel1))
                                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(UNRELATED)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        231, PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(98, 98, 98)
-                                                .addComponent(ViewMessage)
+                                                .addComponent(btnViewMessage)
                                                 .addGap(40, 40, 40)
-                                                .addComponent(Back)))
+                                                .addComponent(btnBack)))
                                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }
 
-    private void ViewMessageActionPerformed(java.awt.event.ActionEvent evt) {
+    private void ViewMessageActionPerformed() {
         r_name = userJList.getSelectedValue().toString();
         System.out.println("Receiver :" + r_name);
         this.setVisible(false);
         new MessageOut().setVisible(true);
     }
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
+    private void BackActionPerformed() {
         this.setVisible(false);
         new UserHome().setVisible(true);
     }
@@ -138,10 +148,10 @@ public class Sent extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Back;
-    private javax.swing.JButton ViewMessage;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList userJList;
+    private JButton btnBack;
+    private JButton btnViewMessage;
+    private JLabel jLabel1;
+    private JScrollPane jScrollPane1;
+    private JList userJList;
 
 }

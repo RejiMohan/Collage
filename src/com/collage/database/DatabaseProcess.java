@@ -1,11 +1,11 @@
 package com.collage.database;
 
-import com.collage.User;
-
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import com.collage.User;
 
 public class DatabaseProcess {
     private static final String USERNAME = "u_name";
@@ -20,7 +20,7 @@ public class DatabaseProcess {
         dbConnection = DatabaseConnection.getInstance();
     }
 
-    public String[] validate(String username) {
+    public String[] getUserLoginDetails(String username) {
         String a[] = new String[4];
         try {
             String query = "select * from login where " + USERNAME + "='" + username + "'";
@@ -78,7 +78,7 @@ public class DatabaseProcess {
         }
     }
 
-    public int change(String username, String password) {
+    public int updatePassword(String username, String password) {
         try {
             String query = "update login set pwd='" + password + "' where  " + USERNAME + "='" + username + "'";
             return dbConnection.updateQuery(query);
@@ -133,7 +133,7 @@ public class DatabaseProcess {
     }
 
 
-    public String[] showDetails(String username) {
+    public String[] getUserDetails(String username) {
         String a[] = new String[4];
         try {
             String query = "select * from registration where  " + USERNAME + "='" + username + "'";
@@ -150,7 +150,7 @@ public class DatabaseProcess {
         return a;
     }
 
-    public String showip(String username) {
+    public String getIpAddress(String username) {
         String ipAddress = "";
         try {
             String qry = "select * from ipaddr where  " + USERNAME + "='" + username + "'";
@@ -196,24 +196,11 @@ public class DatabaseProcess {
         return i;
     }
 
-    public String getIP(String username) {
-        String query = "select * from ipaddr where  " + USERNAME + "='" + username + "'";
-        resultSet = dbConnection.executeQuery(query);
-        try {
-            if (resultSet.next()) {
-                return resultSet.getString("ip");
-            }
-        } catch (Exception e) {
-            System.out.println("Exception " + e);
-        }
-        return "Error";
-    }
-
     public List getIPList() {
-        String qry = "select * from ipaddr";
+        String query = "select * from ipaddr";
         List ipList = new ArrayList();
         try {
-            resultSet = dbConnection.executeQuery(qry);
+            resultSet = dbConnection.executeQuery(query);
             while (resultSet.next()) {
                 ipList.add(resultSet.getString("ip"));
             }
@@ -223,11 +210,11 @@ public class DatabaseProcess {
         return ipList;
     }
 
-    public String getUser(String userIpAddress) {
+    public String getUsernameFromIpAddress(String ipAddress) {
         String user = "";
-        String qry = "select * from ipaddr where ip='" + userIpAddress + "'";
+        String query = "select * from ipaddr where ip='" + ipAddress + "'";
         try {
-            resultSet = dbConnection.executeQuery(qry);
+            resultSet = dbConnection.executeQuery(query);
             while (resultSet.next()) {
                 user = resultSet.getString(USERNAME);
             }
@@ -238,9 +225,9 @@ public class DatabaseProcess {
     }
 
     public int setStatus(String ipAddress, String status) {
-        String qry = "update imgstat set status='" + status + "' where ip='" + ipAddress + "'";
+        String query = "update imgstat set status='" + status + "' where ip='" + ipAddress + "'";
         try {
-            return dbConnection.updateQuery(qry);
+            return dbConnection.updateQuery(query);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }

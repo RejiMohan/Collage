@@ -1,16 +1,10 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
+import static javax.swing.GroupLayout.Alignment;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.JOptionPane.showMessageDialog;
 
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -21,6 +15,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
+
+import com.collage.database.DatabaseProcess;
 
 public class ClientList extends JFrame {
 
@@ -89,29 +94,27 @@ public class ClientList extends JFrame {
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(52, 52, 52)
-                                                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE,
-                                                        356, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        356, PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(93, 93, 93)
                                                 .addComponent(btnView)
                                                 .addGap(87, 87, 87)
-                                                .addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 64, javax
-                                                        .swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnBack, PREFERRED_SIZE, 64, PREFERRED_SIZE)))
                                 .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 297, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, PREFERRED_SIZE, 297, PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(Alignment.BASELINE)
                                         .addComponent(btnBack)
                                         .addComponent(btnView))
                                 .addContainerGap(122, Short.MAX_VALUE))
@@ -126,7 +129,7 @@ public class ClientList extends JFrame {
             this.setVisible(false);
             new Details().setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "No User Selected");
+            showMessageDialog(this, "No User Selected");
         }
     }
 

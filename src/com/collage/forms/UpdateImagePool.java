@@ -1,10 +1,9 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
-import com.collage.fileTransfer.Admin;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -12,6 +11,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+
+import com.collage.database.DatabaseProcess;
+import com.collage.fileTransfer.Admin;
 
 public class UpdateImagePool extends javax.swing.JFrame {
 
@@ -38,81 +48,80 @@ public class UpdateImagePool extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        Update = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ulist = new javax.swing.JList();
-        Back = new javax.swing.JButton();
-        TryAgain = new javax.swing.JButton();
+        btnUpdate = new JButton();
+        jScrollPane1 = new JScrollPane();
+        ulist = new JList();
+        btnBack = new JButton();
+        btnTryAgain = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        Update.setFont(new java.awt.Font("Verdana", 0, 11));
-        Update.setForeground(new java.awt.Color(51, 51, 51));
-        Update.setText("Update");
-        Update.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnUpdate.setForeground(new java.awt.Color(51, 51, 51));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateActionPerformed(evt);
+                UpdateActionPerformed();
             }
         });
 
         jScrollPane1.setViewportView(ulist);
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11));
-        Back.setForeground(new java.awt.Color(51, 51, 51));
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);
             }
         });
 
-        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11));
-        TryAgain.setForeground(new java.awt.Color(51, 51, 51));
-        TryAgain.setText("Try Again");
-        TryAgain.setEnabled(false);
-        TryAgain.addActionListener(new java.awt.event.ActionListener() {
+        btnTryAgain.setFont(new java.awt.Font("Verdana", 0, 11));
+        btnTryAgain.setForeground(new java.awt.Color(51, 51, 51));
+        btnTryAgain.setText("Try Again");
+        btnTryAgain.setEnabled(false);
+        btnTryAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TryAgainActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Back)
+                                .addGroup(layout.createParallelGroup(LEADING)
+                                        .addComponent(btnBack)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        98, PREFERRED_SIZE)
                                                 .addGap(43, 43, 43)
-                                                .addComponent(TryAgain))
-                                        .addComponent(Update))
+                                                .addComponent(btnTryAgain))
+                                        .addComponent(btnUpdate))
                                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addComponent(Update)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(UNRELATED)
+                                .addComponent(jScrollPane1, PREFERRED_SIZE, 140, PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Back)
+                                .addComponent(btnBack)
                                 .addContainerGap(26, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(150, Short.MAX_VALUE)
-                                .addComponent(TryAgain)
+                                .addComponent(btnTryAgain)
                                 .addGap(127, 127, 127))
         );
 
         pack();
     }
 
-    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+    private void UpdateActionPerformed() {
         try {
             File dir = new File("D:/ImagePool");
             File[] f = dir.listFiles();
@@ -126,14 +135,15 @@ public class UpdateImagePool extends javax.swing.JFrame {
                     }
                 }
                 if (f_cnt == f.length) {
-                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(ipList.get(i)
+                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess
+                            .getUsernameFromIpAddress(ipList.get(i)
                             .toString()));
                     if (users.contains(ipList.get(i)))
 
                         users.remove(ipList.get(i));
                     databaseProcess.setStatus(ipList.get(i).toString(), "0");
                 } else {
-                    JOptionPane.showMessageDialog(null, "ImagePool Updation of " + databaseProcess.getUser(ipList.get
+                    JOptionPane.showMessageDialog(null, "ImagePool Updation of " + databaseProcess.getUsernameFromIpAddress(ipList.get
                             (i).toString
                             ()) + " not successful");
                     if (!(users.contains(ipList.get(i)))) {
@@ -144,7 +154,7 @@ public class UpdateImagePool extends javax.swing.JFrame {
                 f_cnt = 0;
             }
             if (users.size() > 0) {
-                TryAgain.setEnabled(true);
+                btnTryAgain.setEnabled(true);
                 ulist.setListData(users);
             }
             for (int k = 0; k < users.size(); k++)
@@ -173,13 +183,13 @@ public class UpdateImagePool extends javax.swing.JFrame {
                     }
                 }
                 if (fileCount == files.length) {
-                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUser(users
+                    JOptionPane.showMessageDialog(null, "All files sent to " + databaseProcess.getUsernameFromIpAddress(users
                             .elementAt(i).toString
                                     ()));
                     users.remove(i);
                     databaseProcess.setStatus(users.elementAt(i).toString(), "0");
                 } else {
-                    JOptionPane.showMessageDialog(null, "ImagePool updation of " + databaseProcess.getUser(users
+                    JOptionPane.showMessageDialog(null, "ImagePool updation of " + databaseProcess.getUsernameFromIpAddress(users
                             .elementAt(i)
                             .toString()) + " not successful");
                     databaseProcess.setStatus(users.elementAt(i).toString(), "1");
@@ -190,26 +200,26 @@ public class UpdateImagePool extends javax.swing.JFrame {
         }
     }
 
-    public void update(String ip) {
+    public void update(String ipAddress) {
         try {
-            if (databaseProcess.getList().contains(ip)) {
+            if (databaseProcess.getList().contains(ipAddress)) {
                 File dir = new File("D:/ImagePool");
                 File[] files = dir.listFiles();
                 int fileCount = 0;
 
                 for (File file : files) {
-                    if (new Admin(ip).sendImage(file.toString()) == 1) {
+                    if (new Admin(ipAddress).sendImage(file.toString()) == 1) {
                         fileCount++;
                     }
                 }
                 if (fileCount == files.length) {
-                    if (users.contains(ip))
-                        users.remove(ip);
-                    databaseProcess.setStatus(ip, "0");
+                    if (users.contains(ipAddress))
+                        users.remove(ipAddress);
+                    databaseProcess.setStatus(ipAddress, "0");
                 } else {
-                    if (!(users.contains(ip)))
-                        users.add(ip);
-                    databaseProcess.setStatus(ip, "1");
+                    if (!(users.contains(ipAddress)))
+                        users.add(ipAddress);
+                    databaseProcess.setStatus(ipAddress, "1");
                 }
             }
         } catch (Exception e) {
@@ -229,9 +239,9 @@ public class UpdateImagePool extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Back;
-    private javax.swing.JButton TryAgain;
-    private javax.swing.JButton Update;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList ulist;
+    private JButton btnBack;
+    private JButton btnTryAgain;
+    private JButton btnUpdate;
+    private JScrollPane jScrollPane1;
+    private JList ulist;
 }

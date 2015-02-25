@@ -1,13 +1,28 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
+import static java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.UIManager.getSystemLookAndFeelClassName;
 
-import javax.swing.UIManager;
-import java.awt.GraphicsEnvironment;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.Vector;
 
-public class Updates extends javax.swing.JFrame {
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+
+import com.collage.database.DatabaseProcess;
+
+public class Updates extends JFrame {
 
     private DatabaseProcess databaseProcess = new DatabaseProcess();
 
@@ -16,14 +31,14 @@ public class Updates extends javax.swing.JFrame {
      */
     public Updates() {
         initComponents();
-        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
-        int wid = getWidth();
-        int heig = getHeight();
-        setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
+        Point center = getLocalGraphicsEnvironment().getCenterPoint();
+        int width = getWidth();
+        int height = getHeight();
+        setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(getSystemLookAndFeelClassName());
             Vector v = databaseProcess.getList();
-            ulist.setListData(v);
+            userJList.setListData(v);
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
@@ -35,86 +50,84 @@ public class Updates extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ulist = new javax.swing.JList();
-        Back = new javax.swing.JButton();
-        TryAgain = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        jScrollPane1 = new JScrollPane();
+        userJList = new JList();
+        btnBack = new JButton();
+        btnTryAgain = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel1.setFont(new Font("Verdana", 0, 11)); // NOI18N
         jLabel1.setText("The following Clients' Imagepools were not updated last time :");
 
-        jScrollPane1.setViewportView(ulist);
+        jScrollPane1.setViewportView(userJList);
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        Back.setForeground(new java.awt.Color(51, 51, 51));
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new Font("Verdana", 0, 11)); // NOI18N
+        btnBack.setForeground(new Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                backActionPerformed();
             }
         });
 
-        TryAgain.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        TryAgain.setForeground(new java.awt.Color(51, 51, 51));
-        TryAgain.setText("Try Again");
-        TryAgain.addActionListener(new java.awt.event.ActionListener() {
+        btnTryAgain.setFont(new Font("Verdana", 0, 11)); // NOI18N
+        btnTryAgain.setForeground(new Color(51, 51, 51));
+        btnTryAgain.setText("Try Again");
+        btnTryAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TryAgainActionPerformed(evt);
+                tryAgainActionPerformed();
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(22, 22, 22)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        110, PREFERRED_SIZE)
                                                 .addGap(106, 106, 106)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING, false)
-                                                        .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(TryAgain)))
+                                                .addGroup(layout.createParallelGroup(LEADING, false)
+                                                        .addComponent(btnBack, DEFAULT_SIZE,
+                                                                DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btnTryAgain)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addComponent(jLabel1)))
                                 .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(46, 46, 46)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jScrollPane1, PREFERRED_SIZE,
+                                                        180, PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(90, 90, 90)
-                                                .addComponent(TryAgain)
+                                                .addComponent(btnTryAgain)
                                                 .addGap(31, 31, 31)
-                                                .addComponent(Back)))
+                                                .addComponent(btnBack)))
                                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
+    private void backActionPerformed() {
         this.setVisible(false);
         new AdminHome().setVisible(true);
     }
 
-    private void TryAgainActionPerformed(java.awt.event.ActionEvent evt) {
-
+    private void tryAgainActionPerformed() {
     }
 
     /**
@@ -129,10 +142,10 @@ public class Updates extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Back;
-    private javax.swing.JButton TryAgain;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList ulist;
+    private JButton btnBack;
+    private JButton btnTryAgain;
+    private JLabel jLabel1;
+    private JScrollPane jScrollPane1;
+    private JList userJList;
 
 }

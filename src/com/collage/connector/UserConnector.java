@@ -1,11 +1,11 @@
 package com.collage.connector;
 
-import com.collage.database.DatabaseProcess;
-import com.collage.forms.Login;
-
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
+
+import com.collage.database.DatabaseProcess;
+import com.collage.forms.Login;
 
 public class UserConnector {
     private Socket socket = null;
@@ -26,7 +26,7 @@ public class UserConnector {
     public void connectToAdmin() {
         try {
             printStream.println("ip");
-            printStream.println(dbProcess.getIP(Login.getUsername()));
+            printStream.println(dbProcess.getIpAddress(Login.getUsername()));
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }

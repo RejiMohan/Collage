@@ -1,5 +1,8 @@
 package com.collage.forms;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,8 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
 
 public class ViewImagePool extends JFrame {
 

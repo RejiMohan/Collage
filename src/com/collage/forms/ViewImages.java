@@ -1,20 +1,40 @@
 package com.collage.forms;
 
-import com.collage.imageOper.FileFinder;
+import static javax.swing.BorderFactory.createLineBorder;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.TRAILING;
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.RELATED;
+import static javax.swing.border.BevelBorder.RAISED;
 
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
-import java.util.Vector;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-public class ViewImages extends javax.swing.JFrame {
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import javax.swing.border.SoftBevelBorder;
+
+import com.collage.imageOper.FileFinder;
+
+public class ViewImages extends JFrame {
 
     /**
      * Creates new form ViewImages
      */
     public static String file = "";
-    private Vector f = new Vector();
+    private ArrayList files = new ArrayList();
 
     public ViewImages() {
         initComponents();
@@ -24,20 +44,20 @@ public class ViewImages extends javax.swing.JFrame {
         setBounds(center.x - width / 2, center.y - height / 2, width, height);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            String s = ViewImagePool.getSelectedChar();
-            ch.setText(s);
-            f = new FileFinder().findFile(s);
+            String selectedChar = ViewImagePool.getSelectedChar();
+            ch.setText(selectedChar);
+            files = new FileFinder().getImages(selectedChar);
             ImageIcon icon;
 
-            icon = new ImageIcon(f.elementAt(0).toString());
+            icon = new ImageIcon(files.get(0).toString());
             img1.setIcon(icon);
-            icon = new ImageIcon(f.elementAt(1).toString());
+            icon = new ImageIcon(files.get(1).toString());
             img2.setIcon(icon);
-            icon = new ImageIcon(f.elementAt(2).toString());
+            icon = new ImageIcon(files.get(2).toString());
             img3.setIcon(icon);
-            icon = new ImageIcon(f.elementAt(3).toString());
+            icon = new ImageIcon(files.get(3).toString());
             img4.setIcon(icon);
-            icon = new ImageIcon(f.elementAt(4).toString());
+            icon = new ImageIcon(files.get(4).toString());
             img5.setIcon(icon);
         } catch (Exception e) {
             System.out.println("Exception " + e);
@@ -51,127 +71,118 @@ public class ViewImages extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        ch = new javax.swing.JTextField();
-        img1 = new javax.swing.JLabel();
-        img2 = new javax.swing.JLabel();
-        img3 = new javax.swing.JLabel();
-        img4 = new javax.swing.JLabel();
-        img5 = new javax.swing.JLabel();
-        Back = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        ch = new JTextField();
+        img1 = new JLabel();
+        img2 = new JLabel();
+        img3 = new JLabel();
+        img4 = new JLabel();
+        img5 = new JLabel();
+        Back = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel1.setFont(new Font("Verdana", 0, 11));
         jLabel1.setText("Images for ");
 
-        img1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        img1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                img1MouseClicked(evt);
+        img1.setBorder(createLineBorder(new Color(0, 0, 0)));
+        img1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                img1MouseClicked();
             }
         });
 
-        img2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        img2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                img2MouseClicked(evt);
+        img2.setBorder(createLineBorder(new Color(0, 0, 0)));
+        img2.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                img2MouseClicked();
             }
         });
 
-        img3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        img3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                img3MouseClicked(evt);
+        img3.setBorder(createLineBorder(new Color(0, 0, 0)));
+        img3.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                img3MouseClicked();
             }
         });
 
-        img4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        img4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                img4MouseClicked(evt);
+        img4.setBorder(createLineBorder(new Color(0, 0, 0)));
+        img4.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                img4MouseClicked();
             }
         });
 
-        img5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        img5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                img5MouseClicked(evt);
+        img5.setBorder(createLineBorder(new Color(0, 0, 0)));
+        img5.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                img5MouseClicked();
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        Back.setForeground(new java.awt.Color(51, 51, 51));
+        Back.setFont(new Font("Verdana", 0, 11));
+        Back.setForeground(new Color(51, 51, 51));
         Back.setText("Back");
-        Back.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Back.setBorder(new SoftBevelBorder(RAISED));
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                BackActionPerformed();
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(44, 44, 44)
                                                 .addComponent(jLabel1)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(ch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax
-                                                        .swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(ch, PREFERRED_SIZE, 27, PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(img1, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(img1, PREFERRED_SIZE, 100,
+                                                        PREFERRED_SIZE)
                                                 .addGap(98, 98, 98)
-                                                .addComponent(img2, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(img2, PREFERRED_SIZE, 100,
+                                                        PREFERRED_SIZE)
                                                 .addGap(88, 88, 88)
-                                                .addComponent(img3, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(img3, PREFERRED_SIZE, 100,
+                                                        PREFERRED_SIZE)))
                                 .addGap(30, 30, 30))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(TRAILING, layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
-                                .addComponent(img4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short
+                                .addComponent(img4, PREFERRED_SIZE, 100, PREFERRED_SIZE)
+                                .addPreferredGap(RELATED, 113, Short
                                         .MAX_VALUE)
-                                .addComponent(img5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
+                                .addComponent(img5, PREFERRED_SIZE, 100, PREFERRED_SIZE)
                                 .addGap(72, 72, 72)
-                                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Back, PREFERRED_SIZE, 47, PREFERRED_SIZE)
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1)
-                                        .addComponent(ch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
-                                                .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(ch, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(img3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing
-                                                .GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(img2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing
-                                                .GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(img1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing
-                                                .GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short
+                                .addGroup(layout.createParallelGroup(LEADING)
+                                        .addComponent(img3, PREFERRED_SIZE, 100, PREFERRED_SIZE)
+                                        .addComponent(img2, PREFERRED_SIZE, 100, PREFERRED_SIZE)
+                                        .addComponent(img1, PREFERRED_SIZE, 100, PREFERRED_SIZE))
+                                .addPreferredGap(RELATED, 27, Short
                                         .MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.TRAILING)
-                                                        .addComponent(img5, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(img4, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createParallelGroup(TRAILING)
+                                                        .addComponent(img5, PREFERRED_SIZE,
+                                                                100, PREFERRED_SIZE)
+                                                        .addComponent(img4, PREFERRED_SIZE,
+                                                                100, PREFERRED_SIZE))
                                                 .addContainerGap())
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(Back)
@@ -179,42 +190,42 @@ public class ViewImages extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void img1MouseClicked(java.awt.event.MouseEvent evt) {
-        file = f.elementAt(0).toString();
+    private void img1MouseClicked() {
+        file = files.get(0).toString();
         this.setVisible(false);
         new ChangeImage().setVisible(true);
     }
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
+    private void BackActionPerformed() {
         this.setVisible(false);
         new ViewImagePool().setVisible(true);
     }
 
-    private void img2MouseClicked(java.awt.event.MouseEvent evt) {
-        file = f.elementAt(1).toString();
+    private void img2MouseClicked() {
+        file = files.get(1).toString();
         this.setVisible(false);
         new ChangeImage().setVisible(true);
     }
 
-    private void img3MouseClicked(java.awt.event.MouseEvent evt) {
-        file = f.elementAt(2).toString();
+    private void img3MouseClicked() {
+        file = files.get(2).toString();
         this.setVisible(false);
         new ChangeImage().setVisible(true);
     }
 
-    private void img4MouseClicked(java.awt.event.MouseEvent evt) {
-        file = f.elementAt(3).toString();
+    private void img4MouseClicked() {
+        file = files.get(3).toString();
         this.setVisible(false);
         new ChangeImage().setVisible(true);
     }
 
-    private void img5MouseClicked(java.awt.event.MouseEvent evt) {
-        file = f.elementAt(4).toString();
+    private void img5MouseClicked() {
+        file = files.get(4).toString();
         this.setVisible(false);
         new ChangeImage().setVisible(true);
-    }//GEN-LAST:event_img5MouseClicked
+    }
 
     /**
      * @param args the command line arguments
@@ -228,13 +239,13 @@ public class ViewImages extends javax.swing.JFrame {
     }
 
     // Variables declaration
-    private javax.swing.JButton Back;
-    private javax.swing.JTextField ch;
-    private javax.swing.JLabel img1;
-    private javax.swing.JLabel img2;
-    private javax.swing.JLabel img3;
-    private javax.swing.JLabel img4;
-    private javax.swing.JLabel img5;
-    private javax.swing.JLabel jLabel1;
+    private JButton Back;
+    private JTextField ch;
+    private JLabel img1;
+    private JLabel img2;
+    private JLabel img3;
+    private JLabel img4;
+    private JLabel img5;
+    private JLabel jLabel1;
 
 }

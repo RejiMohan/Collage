@@ -9,11 +9,17 @@ import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
 import static javax.swing.SwingConstants.HORIZONTAL;
 import static javax.swing.SwingConstants.VERTICAL;
 
-import com.collage.connector.AdminConnector;
-import com.collage.connector.UserConnector;
-import com.collage.database.DatabaseProcess;
-import com.collage.fileTransfer.Server;
-import com.collage.fileTransfer.User;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -26,17 +32,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import com.collage.connector.AdminConnector;
+import com.collage.connector.UserConnector;
+import com.collage.database.DatabaseProcess;
+import com.collage.fileTransfer.Server;
+import com.collage.fileTransfer.User;
 
 public class Login extends JFrame {
 
@@ -214,7 +215,7 @@ public class Login extends JFrame {
             if (username.equals("") || password.equals("")) {
                 JOptionPane.showMessageDialog(this, "Enter values in both fields");
             } else {
-                String a[] = databaseProcess.validate(username);
+                String a[] = databaseProcess.getUserLoginDetails(username);
 
                 boolean isExistingUser = databaseProcess.isAlreadyExistingUsername(username);
                 if (!isExistingUser || !(a[3].equals(username))) {

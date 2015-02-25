@@ -68,29 +68,20 @@ public class Server implements Runnable {
                     }
                     fos.close();
                 }
-
             } catch (Exception e) {
                 System.out.println("Exception " + e);
             }
         }
-
     }
 
     public void run() {
         try {
             while (true) {
                 socket = serverSocket.accept();
-
-                //System.out.println("Accepted");
-                //c_ip.addElement(socket);
                 new Receiver(socket).start();
             }
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-    }
-
-    public static void main(String args[]) throws Exception {
-        Server server = new Server();
     }
 }

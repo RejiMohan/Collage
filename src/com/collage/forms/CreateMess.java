@@ -1,44 +1,59 @@
 package com.collage.forms;
 
-import com.collage.database.DatabaseProcess;
-import com.collage.fileTransfer.Client;
-import com.collage.imageOper.Encoder;
+import static java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment;
+import static javax.swing.GroupLayout.Alignment.BASELINE;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.PREFERRED_SIZE;
+import static javax.swing.LayoutStyle.ComponentPlacement.UNRELATED;
+import static javax.swing.UIManager.getSystemLookAndFeelClassName;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import java.awt.GraphicsEnvironment;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+
+import com.collage.database.DatabaseProcess;
+import com.collage.fileTransfer.Client;
+import com.collage.imageOper.Encoder;
+
 public class CreateMess extends javax.swing.JFrame {
 
     private List userList = new ArrayList();
-    private DatabaseProcess dp = new DatabaseProcess();
-    private String user = Login.getUsername();
+    private DatabaseProcess databaseProcess = new DatabaseProcess();
+    private String username = Login.getUsername();
 
     /**
      * Creates new form CreateMess
      */
     public CreateMess() {
         initComponents();
-        Point center = GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint();
+        Point center = getLocalGraphicsEnvironment().getCenterPoint();
         int wid = getWidth();
         int heig = getHeight();
         setBounds(center.x - wid / 2, center.y - heig / 2, wid, heig);
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(getSystemLookAndFeelClassName());
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
-        userList = dp.listUsers(1);
+        userList = databaseProcess.listUsers(1);
         for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).toString().equals(user)) {
+            if (userList.get(i).toString().equals(username)) {
                 continue;
             }
-            u_list.addItem(userList.get(i));
+            userListComboBox.addItem(userList.get(i));
         }
-
     }
 
     /**
@@ -47,136 +62,134 @@ public class CreateMess extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        msg_txt = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        u_list = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        Send = new javax.swing.JButton();
-        Clear = new javax.swing.JButton();
-        Back = new javax.swing.JButton();
+        jLabel1 = new JLabel();
+        jScrollPane1 = new JScrollPane();
+        msgTextArea = new JTextArea();
+        jLabel2 = new JLabel();
+        userListComboBox = new JComboBox();
+        jLabel3 = new JLabel();
+        btnSend = new JButton();
+        btnClear = new JButton();
+        btnBack = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14));
+        jLabel1.setFont(new Font("Verdana", 1, 14));
         jLabel1.setText("Create Message");
 
-        msg_txt.setColumns(20);
-        msg_txt.setRows(5);
-        jScrollPane1.setViewportView(msg_txt);
+        msgTextArea.setColumns(20);
+        msgTextArea.setRows(5);
+        jScrollPane1.setViewportView(msgTextArea);
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12));
+        jLabel2.setFont(new Font("Verdana", 0, 12));
         jLabel2.setText("To");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 12));
+        jLabel3.setFont(new Font("Verdana", 0, 12));
         jLabel3.setText("Message:");
 
-        Send.setFont(new java.awt.Font("Verdana", 0, 11));
-        Send.setForeground(new java.awt.Color(51, 51, 51));
-        Send.setText("Send");
-        Send.addActionListener(new java.awt.event.ActionListener() {
+        btnSend.setFont(new Font("Verdana", 0, 11));
+        btnSend.setForeground(new Color(51, 51, 51));
+        btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendActionPerformed(evt);
+                SendActionPerformed();
             }
         });
 
-        Clear.setFont(new java.awt.Font("Verdana", 0, 11));
-        Clear.setForeground(new java.awt.Color(51, 51, 51));
-        Clear.setText("Clear");
-        Clear.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setFont(new Font("Verdana", 0, 11));
+        btnClear.setForeground(new Color(51, 51, 51));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearActionPerformed(evt);
+                ClearActionPerformed();
             }
         });
 
-        Back.setFont(new java.awt.Font("Verdana", 0, 11));
-        Back.setForeground(new java.awt.Color(51, 51, 51));
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new Font("Verdana", 0, 11));
+        btnBack.setForeground(new Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                BackActionPerformed();
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout
-                                                        .Alignment.LEADING)
+                                                .addGroup(layout.createParallelGroup(LEADING)
                                                         .addComponent(jLabel1)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addComponent(jLabel2)
                                                                 .addGap(18, 18, 18)
-                                                                .addComponent(u_list, javax.swing.GroupLayout
-                                                                        .PREFERRED_SIZE, 189, javax.swing.GroupLayout
-                                                                        .PREFERRED_SIZE))
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE, 368, javax.swing.GroupLayout
-                                                                .PREFERRED_SIZE)
+                                                                .addComponent(userListComboBox,
+                                                                        PREFERRED_SIZE, 189,
+                                                                        PREFERRED_SIZE))
+                                                        .addComponent(jScrollPane1,
+                                                                PREFERRED_SIZE, 368,
+                                                                PREFERRED_SIZE)
                                                         .addComponent(jLabel3)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(77, 77, 77)
-                                                .addComponent(Send)
+                                                .addComponent(btnSend)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(Clear)
+                                                .addComponent(btnClear)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(Back)))
+                                                .addComponent(btnBack)))
                                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing
-                                        .GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1, PREFERRED_SIZE, 26, PREFERRED_SIZE)
+                                .addPreferredGap(UNRELATED)
+                                .addGroup(layout.createParallelGroup(BASELINE)
                                         .addComponent(jLabel2)
-                                        .addComponent(u_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
-                                                .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(userListComboBox, PREFERRED_SIZE, javax.swing
+                                                .GroupLayout.DEFAULT_SIZE, PREFERRED_SIZE))
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing
-                                        .GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(UNRELATED)
+                                .addComponent(jScrollPane1, PREFERRED_SIZE, javax.swing
+                                        .GroupLayout.DEFAULT_SIZE, PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(Send)
-                                        .addComponent(Clear)
-                                        .addComponent(Back))
+                                .addGroup(layout.createParallelGroup(BASELINE)
+                                        .addComponent(btnSend)
+                                        .addComponent(btnClear)
+                                        .addComponent(btnBack))
                                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }
 
-    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {
-        msg_txt.setText("");
+    private void ClearActionPerformed() {
+        msgTextArea.setText("");
     }
 
-    private void SendActionPerformed(java.awt.event.ActionEvent evt) {
+    private void SendActionPerformed() {
         String msg;
         String ip;
         try {
-            msg = msg_txt.getText();
+            msg = msgTextArea.getText();
             Encoder en = new Encoder();
             String op = en.convert(msg);
-            ip = new DatabaseProcess().getIP(u_list.getSelectedItem().toString());
-            new Client(ip).send(op, u_list.getSelectedItem().toString());
+            ip = new DatabaseProcess().getIpAddress(userListComboBox.getSelectedItem().toString());
+            new Client(ip).send(op, userListComboBox.getSelectedItem().toString());
             JOptionPane.showMessageDialog(null, "Message Sent");
-            msg_txt.setText("");
+            msgTextArea.setText("");
         } catch (Exception e) {
             System.out.println("Exception " + e);
         }
     }
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {
+    private void BackActionPerformed() {
         this.setVisible(false);
         new UserHome().setVisible(true);
     }
@@ -192,15 +205,15 @@ public class CreateMess extends javax.swing.JFrame {
         });
     }
 
-    private javax.swing.JButton Back;
-    private javax.swing.JButton Clear;
-    private javax.swing.JButton Send;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea msg_txt;
-    private javax.swing.JComboBox u_list;
+    private JButton btnBack;
+    private JButton btnClear;
+    private JButton btnSend;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JScrollPane jScrollPane1;
+    private JTextArea msgTextArea;
+    private JComboBox userListComboBox;
 
 
 }
